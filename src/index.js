@@ -19,3 +19,15 @@ function clearContent() {
 
 generateNavFolders(folders, navList);
 generateProjectPage(folders[0].projects[0], content);
+
+const allFolders = document.querySelectorAll(".nav-folder");
+allFolders.forEach((folderItem) => {
+    const folderIndex = folderItem.dataset.index
+    const folderLink = folderItem.querySelector("h2");
+    const projectLinks = folderItem.querySelectorAll("li");
+
+    folderLink.addEventListener("click", () => {
+        clearContent();
+        generateFolderPage(folders[folderIndex], content);
+    })
+})
