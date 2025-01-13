@@ -1,0 +1,46 @@
+[
+    {
+       "name":"Unsorted",
+       "description":"This is a folder for all undsorted projects.",
+       "projects":[
+            {
+                "name":"Create a to-do list app",
+                "description":"My next big project will be a to-do list application, it's gonna be a lot of learning!",
+                "deadline":"2025-01-13T14:05:39.686Z",
+                "toDoList":[
+                    {
+                        "name":"Create an awesome looking page",
+                        "description":"I need to get better at UX.",
+                        "deadline":"2025-01-13T14:05:39.686Z",
+                        "priority":"Low"
+                    },
+                    {
+                        "name":"Hook the DOM up to the data",
+                        "description":"There's so many moving parts all of a sudden ;-;",
+                        "deadline":"2025-01-13T14:05:39.686Z",
+                        "priority":"Low"
+                    }
+                ]
+            },
+            {
+                "name":"Learn German",
+                "description":"Why did they make this language so hard?",
+                "deadline":"2025-01-13T14:05:39.686Z",
+                "toDoList":[
+                    {
+                        "name":"Memorise gendered endings",
+                        "description":"WHY ARE THERE SO MANY",
+                        "deadline":"2025-01-13T14:05:39.686Z",
+                        "priority":"High"
+                    },
+                    {
+                        "name":"Complete A1 course",
+                        "description":"You've gotta start somewhere!",
+                        "deadline":"2025-01-13T14:05:39.686Z",
+                        "priority":"Ongoing"
+                    }
+                ]
+            }
+       ]
+    }
+]
