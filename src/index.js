@@ -1,33 +1,44 @@
-import  { addNewFolder, newFolder, newProject, newToDoItem} from "./js/app-logic"
+import  { addNewprojects, newprojects, newProject, newToDoItem} from "./js/app-logic"
 import loadData from "./js/loadData.js";
-import generateNavFolders from "./js/nav-folder-list.js";
+import generateNavprojects from "./js/nav-projects-list.js";
 import generateProjectPage from "./js/project-gen.js";
-import generateFolderPage from "./js/folder-gen.js";
+import generateprojectsPage from "./js/projects-gen.js";
 import "./styles.css";
 
 console.log("Hello World!");
 
-let folders = [].concat(loadData());
-console.log(folders);
+let projects = [].concat(loadData());
+console.log(projects);
 
-const navList = document.querySelector("#nav-folder-list");
+const navList = document.querySelector("#nav-projects-list");
 const content = document.querySelector("#content");
 
 function clearContent() {
     content.textContent = '';
 }
 
-generateNavFolders(folders, navList);
-generateProjectPage(folders[0].projects[0], content);
+function updatePage(){
+    generateNavprojects(projects, navList);
+    const allprojects = document.querySelectorAll(".nav-projects");
+    allprojects.forEach((projectsItem) => {
+        const projectsIndex = projectsItem.dataset.index;
+        const projectsLink = projectsItem.querySelector("h2");
+        const allProjectLinks = projectsItem.querySelectorAll("li");
+    
+        projectsLink.addEventListener("click", () => {
+            clearContent();
+            generateprojectsPage(projects[projectsIndex], content);
+        });
+    
+        allProjectLinks.forEach((projectLink) => {
+            const projectIndex = projectLink.dataset.index;
+            projectLink.addEventListener("click", () => {
+                clearContent();
+                generateProjectPage(projects[projectsIndex].projects[projectIndex], content);
+            });
+        });
+    });
+}
 
-const allFolders = document.querySelectorAll(".nav-folder");
-allFolders.forEach((folderItem) => {
-    const folderIndex = folderItem.dataset.index
-    const folderLink = folderItem.querySelector("h2");
-    const projectLinks = folderItem.querySelectorAll("li");
-
-    folderLink.addEventListener("click", () => {
-        clearContent();
-        generateFolderPage(folders[folderIndex], content);
-    })
-})
+generateProjectPage(projects[0], content);
+updatePage()

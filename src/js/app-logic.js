@@ -1,18 +1,3 @@
-
-const folders = []
-
-function addNewFolder(folder) {
-    folders.push(folder);
-}
-
-function newFolder(name, description) {
-    const projects = [];
-    const addProjects = (project) => projects.push(project);
-    const delProjects = (projectIndex) => projects.splice(projectIndex, 1);
-
-    return { name, description, projects, addProjects, delProjects} ;
-}
-
 function newProject(name, description, deadline) {
     const toDoList = [];
     const addToDoItem = (toDoItem) => toDoList.push(toDoItem);
@@ -25,4 +10,4 @@ function newToDoItem(name, description, deadline, priority) {
     return { name, description, deadline, priority }
 }
 
-export {folders, addNewFolder, newFolder, newProject, newToDoItem}
+export { newProject, newToDoItem}
