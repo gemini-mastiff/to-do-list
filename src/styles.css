@@ -13,7 +13,7 @@ menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
 	padding: 0;
-	border: 0;
+	/* border: 1px solid red; */
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
@@ -28,9 +28,70 @@ time, mark, audio, video {
 :root{
     --MAIN-COLOUR: #fafaf9;
     --BG-COLOUR: #e5e7eb;
+	--TEXT-LIGHT: #a3a3a3;
     --ACCENT-1: #0ea5e9;
     --ACCENT-2: #facc15;
     font-family: 'Roboto Flex', sans-serif;
     font-size: 1rem;
     line-height: 1.5;
+}
+
+body{
+	height: 100vh;
+	background-color: var(--MAIN-COLOUR);
+	display: grid;
+	grid-template-columns: minmax(250px, 20%) 1fr;
+}
+
+ul>li{
+	list-style: none;
+}
+
+/* NAV */
+
+nav{
+	background-color: var(--BG-COLOUR);
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	padding: 1rem;
+}
+
+.nav-top{
+	display: flex;
+	flex-direction: column;
+}
+
+.nav-folder-list{
+	display: flex;
+	flex-direction: column;
+}
+
+.nav-projects{
+	margin-left: 1rem;
+}
+
+/* MAIN */ 
+
+main{
+	padding: 3rem;
+}
+
+.title-wrapper{
+	margin-bottom: 3rem;
+}
+
+.title-wrapper>h1{
+	font-size: 3rem;
+	font-weight: bold;
+}
+
+.title-wrapper>p{
+	color: var(--TEXT-LIGHT);
+}
+
+.project-wrapper>h2{
+	color: var(--ACCENT-1);
+	font-size: 1.5rem;
+	font-weight: bold;
 }
