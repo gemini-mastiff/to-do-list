@@ -37,7 +37,7 @@ export default function(project, content) {
     wrapper.appendChild(titleWrapper);
     wrapper.appendChild(toDoList);
     content.appendChild(wrapper);
-
+    
 }
 
 {/* 
