@@ -21,8 +21,8 @@ function newProject(name, description, deadline) {
     return { name, description, deadline, toDoList, addToDoItem, delToDoItem}
 }
 
-function newToDoItem(task, desc, deadline, priority) {
-    return { task, desc, deadline, priority }
+function newToDoItem(name, description, deadline, priority) {
+    return { name, description, deadline, priority }
 }
 
 export {folders, addNewFolder, newFolder, newProject, newToDoItem}
