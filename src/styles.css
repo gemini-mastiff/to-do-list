@@ -62,7 +62,7 @@ nav{
 	flex-direction: column;
 }
 
-.nav-folder-list{
+#nav-folder-list{
 	display: flex;
 	flex-direction: column;
 }
@@ -71,13 +71,18 @@ nav{
 	margin-left: 1rem;
 }
 
+#footer-button{
+	margin-top: auto;
+	text-align: center;
+}
+
 /* MAIN */ 
 
 main{
 	padding: 3rem;
 }
 
-.folder-wrapper{
+.folder-page-wrapper{
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
@@ -96,8 +101,25 @@ main{
 	color: var(--TEXT-LIGHT);
 }
 
-.project-wrapper>h2{
+.projects-list{
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.project-item>h2{
 	color: var(--ACCENT-1);
 	font-size: 1.5rem;
 	font-weight: bold;
+}
+
+.to-do-list>li{
+	display: flex;
+	align-items: center;
+	gap: 0.8rem;
+}
+
+.to-do-list>li>p{
+	color: var(--TEXT-LIGHT);
+	font-size: 0.8rem;
 }
