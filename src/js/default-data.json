@@ -1,7 +1,7 @@
 [
     {
        "name":"Unsorted",
-       "description":"This is a folder for all undsorted projects.",
+       "description":"This is a folder for all unsorted projects.",
        "projects":[
             {
                 "name":"Create a to-do list app",
