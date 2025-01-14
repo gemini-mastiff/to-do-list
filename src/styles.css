@@ -179,8 +179,19 @@ main{
 }
 
 .title-wrapper>h1{
+	width: fit-content;
+	position: relative;
 	font-size: 3rem;
 	font-weight: bold;
+}
+
+.title-wrapper .edit-project-button{
+	cursor: pointer;
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	top: 1.5rem;
+	right: -3rem;
 }
 
 .title-wrapper>p{

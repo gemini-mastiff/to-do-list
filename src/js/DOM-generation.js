@@ -1,3 +1,6 @@
+import closeBtnSvg from "../svg/window-close.svg";
+import editBtnSvg from "../svg/dots-horizontal.svg";
+
 const navList = document.querySelector("#nav-projects-list");
 const content = document.querySelector("#content");
 
@@ -16,9 +19,15 @@ function generateProjectPage(project) {
     const titleWrapper = document.createElement("div");
     titleWrapper.classList.add("title-wrapper");
     const projectHeader = document.createElement("h1");
+    const editProjectBtn = document.createElement("img");
     const projectDesc = document.createElement("p");
     projectHeader.textContent = project.name;
+    editProjectBtn.src = editBtnSvg;
+    editProjectBtn.alt = "Edit Project Button";
+    editProjectBtn.classList.add("edit-project-button");
+    editProjectBtn.id = "edit-project-open";
     projectDesc.textContent = project.description;
+    projectHeader.appendChild(editProjectBtn);
     titleWrapper.appendChild(projectHeader);
     titleWrapper.appendChild(projectDesc);
 
@@ -45,7 +54,13 @@ function generateProjectPage(project) {
 
     wrapper.appendChild(titleWrapper);
     wrapper.appendChild(toDoList);
+
+    const dialog = document.createElement("dialog");
+    dialog.classList.add("modal");
+    dialog.id = "edit-project-modal"
+
     content.appendChild(wrapper);
+    content.appendChild(dialog);
     
 }
 
@@ -56,6 +71,7 @@ The above fuction generates:
     <div class="project-page-wrapper">
         <div class="title-wrapper">
             <h1>Project Title</h1>
+            <img src="./svg/dots-horizontal.svg" alt"Edit Project" id="edit-project-open" class="edit-project-button">
             <p>This is the description of the Project.</p>
         </div>
         <ul class="to-do-list">
@@ -77,6 +93,20 @@ The above fuction generates:
         </ul>
     </div>
 </div>
+
+<dialog class="modal" id="edit-project-modal">
+    <img src="./svg/window-close.svg" alt="Close Button" id="edit-project-close" class="close-button">
+    <h2>Edit Project</h2>
+    <form method="dialog">
+        <label for="projectName">Project Name:</label>
+        <input type="text" name="projectName" id="projectName">
+        <label for="projectDescription">Description:</label>
+        <textarea rows="3" name="projectDescription" id="projectDescription"></textarea>
+        <label for="projectDeadline">Deadline:</label>
+        <input type="datetime-local" name="projectDeadline" id="projectDeadline">
+        <button id="edit-project-save">Save</button>
+    </form>
+</dialog>
 */}
 
 function generateNavprojects(projects) {
