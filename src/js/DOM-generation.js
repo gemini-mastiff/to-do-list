@@ -8,8 +8,9 @@ function clearElement(element) {
     element.textContent = '';
 }
 
-function generateProjectPage(project) {
+function generateProjectPage(projects, index) {
     clearElement(content)
+    const project = projects[index];
 
     const toDoArray = project.toDoList;
 
@@ -27,9 +28,8 @@ function generateProjectPage(project) {
     editProjectBtn.classList.add("edit-project-button");
     editProjectBtn.id = "edit-project-open";
     projectDesc.textContent = project.description;
-    projectHeader.appendChild(editProjectBtn);
-    titleWrapper.appendChild(projectHeader);
-    titleWrapper.appendChild(projectDesc);
+    projectHeader.append(editProjectBtn);
+    titleWrapper.append(projectHeader, projectDesc);
 
     const toDoList = document.createElement("ul");
     toDoList.classList.add("to-do-list");
@@ -46,22 +46,61 @@ function generateProjectPage(project) {
         const deadline = document.createElement("p");
         deadline.textContent = toDo.deadline;
 
-        listItem.appendChild(checkbox);
-        listItem.appendChild(header);
-        listItem.appendChild(deadline);
-        toDoList.appendChild(listItem);
+        listItem.append(checkbox, header, deadline);
+        toDoList.append(listItem);
     });
 
-    wrapper.appendChild(titleWrapper);
-    wrapper.appendChild(toDoList);
+    wrapper.append(titleWrapper, toDoList);
 
     const dialog = document.createElement("dialog");
     dialog.classList.add("modal");
-    dialog.id = "edit-project-modal"
+    dialog.id = "edit-project-modal";
 
-    content.appendChild(wrapper);
-    content.appendChild(dialog);
-    
+    const closeDialogBtn = document.createElement("img");
+    closeDialogBtn.src = closeBtnSvg;
+    closeDialogBtn.alt = "Close Button";
+    closeDialogBtn.id = "edit-project-close";
+
+    const dialogHeader = document.createElement("h2");
+    dialogHeader.textContent = "Edit Project";
+
+    const dialogForm = document.createElement("form");
+    dialogForm.method = "form";
+
+    // NEEDS CLEANING UP!!
+    const nameLabel = document.createElement("label");
+    nameLabel.textContent = "Project Name:";
+    nameLabel.for = "projectName";
+    const nameInput = document.createElement("input");
+    nameInput.type = "text";
+    nameInput.name = "projectName";
+    nameInput.id = "projectName";
+
+    const descriptionLabel = document.createElement("label");
+    descriptionLabel.textContent = "Description:";
+    descriptionLabel.for = "projectDescription";
+    const descriptionInput = document.createElement("textarea");
+    descriptionInput.rows = "4";
+    descriptionInput.name = "projectDescription";
+    descriptionInput.id = "projectDescription";
+
+    const deadlineLabel = document.createElement("label");
+    deadlineLabel.textContent = "Deadline:";
+    deadlineLabel.for = "projectDeadline";
+    const deadlineInput = document.createElement("input");
+    deadlineInput.type = "datetime-local";
+    deadlineInput.name = "projectDeadline";
+    deadlineInput.id = "projectDeadline";
+
+    const saveProjectBtn = document.createElement("button");
+    saveProjectBtn.id = "edit-project-save";
+    saveProjectBtn.setAttribute("data-index", index);
+
+    dialogForm.append(nameLabel, nameInput,descriptionLabel, descriptionInput, deadlineLabel, deadlineInput, saveProjectBtn);
+
+    dialog.append(closeDialogBtn, dialogHeader, dialogForm);
+
+    content.append(wrapper, dialog);
 }
 
 {/* 
@@ -104,9 +143,10 @@ The above fuction generates:
         <textarea rows="3" name="projectDescription" id="projectDescription"></textarea>
         <label for="projectDeadline">Deadline:</label>
         <input type="datetime-local" name="projectDeadline" id="projectDeadline">
-        <button id="edit-project-save">Save</button>
+        <button id="edit-project-save" data-index="x" >Save</button>
     </form>
 </dialog>
+
 */}
 
 function generateNavprojects(projects) {
@@ -121,7 +161,7 @@ function generateNavprojects(projects) {
 
         navProject.textContent = project.name;
 
-        navList.appendChild(navProject)
+        navList.append(navProject)
 
     });
 }
