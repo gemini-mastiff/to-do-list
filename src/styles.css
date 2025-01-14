@@ -90,7 +90,7 @@ nav{
 
 /* NEW PROJECT DIALOG */
 
-.modal{
+.modal[open]{
 	background-color: var(--MAIN-COLOUR);
 	width: 70vw;
 	position: absolute;

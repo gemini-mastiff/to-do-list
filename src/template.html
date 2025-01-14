@@ -19,26 +19,25 @@
     </div>
     <div id="nav-projects-list"></div>
     <button id="new-project-open">New Project</button>
-
-    <dialog class="modal" id="new-project-modal">
-        <img src="./svg/window-close.svg" alt="Close Button" id="new-project-close">
-        <h2>New Project</h2>
-        <form>
-            <label for="projectName">Project Name:</label>
-            <input type="text" name="projectName" id="projectName">
-            <label for="projectDescription">Description:</label>
-            <textarea rows="3" name="projectDescription" id="projectDescription"></textarea>
-            <label for="projectDeadline">Deadline:</label>
-            <input type="datetime-local" name="projectDeadline" id="projectDeadline">
-            <button id="new-project-save">Save Project</button>
-        </form>
-    </dialog>
 </nav>
+
+<dialog class="modal" id="new-project-modal">
+    <img src="./svg/window-close.svg" alt="Close Button" id="new-project-close">
+    <h2>New Project</h2>
+    <form>
+        <label for="projectName">Project Name:</label>
+        <input type="text" name="projectName" id="projectName">
+        <label for="projectDescription">Description:</label>
+        <textarea rows="3" name="projectDescription" id="projectDescription"></textarea>
+        <label for="projectDeadline">Deadline:</label>
+        <input type="datetime-local" name="projectDeadline" id="projectDeadline">
+        <button id="new-project-save">Save Project</button>
+    </form>
+</dialog>
 
 <main>
 
-<div id="content">
-</div>
+<div id="content"></div>
 
 </main>
     
