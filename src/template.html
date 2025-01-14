@@ -9,22 +9,24 @@
 <body>
 
 <nav>
-    <div class="nav-top">
-        <ul>
-            <li>Home</li>
-            <li>Today</li>
-            <li>Upcoming</li>
-            <li>Anytime</li>
-        </ul>
+    <div class="nav-wrapper">
+        <div class="nav-top">
+            <ul>
+                <li>Home</li>
+                <li>Today</li>
+                <li>Upcoming</li>
+                <li>Anytime</li>
+            </ul>
+        </div>
+        <div id="nav-projects-list"></div>
     </div>
-    <div id="nav-projects-list"></div>
     <button id="new-project-open">New Project</button>
 </nav>
 
 <dialog class="modal" id="new-project-modal">
-    <img src="./svg/window-close.svg" alt="Close Button" id="new-project-close">
+    <img src="./svg/window-close.svg" alt="Close Button" id="new-project-close" class="close-button">
     <h2>New Project</h2>
-    <form>
+    <form method="dialog">
         <label for="projectName">Project Name:</label>
         <input type="text" name="projectName" id="projectName">
         <label for="projectDescription">Description:</label>

@@ -47,16 +47,22 @@ ul>li{
 	list-style: none;
 }
 
-#new-project-close{
+.close-button{
 	cursor: pointer;
-	width: 20px;
-	height: 20px;
+	width: 25px;
+	height: 25px;
 }
 
 /* NAV */
 
 nav{
 	background-color: var(--BG-COLOUR);
+	display: flex;
+	flex-direction: column;
+}
+
+.nav-wrapper{
+	flex: 1;
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
@@ -81,9 +87,13 @@ nav{
 }
 
 #new-project-open{
-	background: none;
+	height: 3rem;
+	background: var(--ACCENT-1);
+	color: var(--MAIN-COLOUR);
 	border: none;
 	font: inherit;
+	font-weight: bold;
+	cursor: pointer;
 	margin-top: auto;
 	text-align: center;
 }
@@ -93,7 +103,7 @@ nav{
 .modal[open]{
 	box-sizing: border-box;
 	background-color: var(--MAIN-COLOUR);
-	width: 70vw;
+	width: 70ch;
 	display: flex;
 	flex-direction: column;
 	border: none;
@@ -106,8 +116,9 @@ nav{
 	opacity: .4;
 }
 
-#new-project-modal>h2{
+.modal>h2{
 	font-size: 2rem;
+	text-transform: uppercase;
 	margin-bottom: 1.5rem;
 }
 
@@ -142,6 +153,7 @@ nav{
 	width: fit-content;
 	font: inherit;
 	font-weight: bold;
+	cursor: pointer;
 	border: none;
 	border-radius: 2rem;
 	margin-top: 1rem;
