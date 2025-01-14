@@ -67,11 +67,17 @@ nav{
 	flex-direction: column;
 }
 
-.nav-projects{
+.nav-top li,
+.nav-project{
+	width: fit-content;
+	cursor: pointer;
 	margin-left: 1rem;
 }
 
-#footer-button{
+#new-project-open{
+	background: none;
+	border: none;
+	font: inherit;
 	margin-top: auto;
 	text-align: center;
 }
