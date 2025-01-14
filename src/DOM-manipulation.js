@@ -1,4 +1,13 @@
-export default function(project, content) {
+const navList = document.querySelector("#nav-projects-list");
+const content = document.querySelector("#content");
+
+function clearElement(element) {
+    element.textContent = '';
+}
+
+function generateProjectPage(project) {
+    clearElement(content)
+
     const toDoArray = project.toDoList;
 
     const wrapper = document.createElement("div");
@@ -41,6 +50,8 @@ export default function(project, content) {
 }
 
 {/* 
+The above fuction generates:
+
 <div id="content">
     <div class="project-page-wrapper">
         <div class="title-wrapper">
@@ -67,3 +78,31 @@ export default function(project, content) {
     </div>
 </div>
 */}
+
+function generateNavprojects(projects) {
+    clearElement(navList);
+
+    projects.forEach((project) => {
+        const navProject = document.createElement("div");
+        navProject.classList.add("nav-project");
+
+        const index = projects.indexOf(project);
+        navProject.setAttribute("data-index", index);
+
+        navProject.textContent = project.name;
+
+        navList.appendChild(navProject)
+
+    });
+}
+
+{/* 
+The above function generates:
+
+<div id="nav-projects-list">
+    <div class="nav-project" data-index="0">Create a to-do list app</div>
+    <div class="nav-project" data-index="1">Learn German</div>
+</div>
+*/}
+
+export { generateProjectPage, generateNavprojects }
