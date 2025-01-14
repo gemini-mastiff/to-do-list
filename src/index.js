@@ -34,10 +34,10 @@ function updateNav(){
     allProjects.forEach((project) => {
         const projectIndex = project.dataset.index;
         project.addEventListener("click", () => {
-            generateProjectPage(projects.getProjectsArray()[projectIndex]);
+            generateProjectPage(projects.getProjectsArray(), projectIndex);
         });
     });
 }
 
-generateProjectPage(projects.getProjectsArray()[0]);
+generateProjectPage(projects.getProjectsArray(), 0);
 updateNav()
