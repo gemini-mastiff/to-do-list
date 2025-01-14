@@ -47,6 +47,12 @@ ul>li{
 	list-style: none;
 }
 
+#new-project-close{
+	cursor: pointer;
+	width: 20px;
+	height: 20px;
+}
+
 /* NAV */
 
 nav{
@@ -80,6 +86,66 @@ nav{
 	font: inherit;
 	margin-top: auto;
 	text-align: center;
+}
+
+/* NEW PROJECT DIALOG */
+
+.modal{
+	background-color: var(--MAIN-COLOUR);
+	width: 70vw;
+	position: absolute;
+	top: auto;
+	display: flex;
+	flex-direction: column;
+	border: none;
+	border-radius: 1rem;
+}
+
+.modal::backdrop{
+	background: rgb(0, 0, 0 / .4);
+}
+
+#new-project-modal>h2{
+	font-size: 2rem;
+	margin-bottom: 1rem;
+}
+
+#new-project-modal>img{
+	align-self: flex-end;
+}
+
+#new-project-modal>form{
+	display: flex;
+	flex-direction: column;
+}
+
+#new-project-modal input,
+#new-project-modal textarea{
+	background-color: var(--BG-COLOUR);
+	font: inherit;
+	border: none;
+	border-radius: 1rem;
+	padding: 0.3rem 0.8rem;
+	margin-bottom: 1rem;
+}
+
+#new-project-modal textarea{
+	resize: vertical;
+	min-height: 1.5rem;
+}
+
+#new-project-modal button{
+	align-self: flex-end;
+	background-color: var(--ACCENT-1);
+	color: var(--MAIN-COLOUR);
+	width: fit-content;
+	font: inherit;
+	font-weight: bold;
+	border: none;
+	border-radius: 2rem;
+	margin-top: 1rem;
+	margin-right: 1rem;
+	padding: 1rem 1rem;
 }
 
 /* MAIN */ 
