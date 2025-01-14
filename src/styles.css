@@ -98,7 +98,7 @@ nav{
 	text-align: center;
 }
 
-/* NEW PROJECT DIALOG */
+/* MODAL DIALOG */
 
 .modal[open]{
 	box-sizing: border-box;
@@ -109,6 +109,7 @@ nav{
 	border: none;
 	border-radius: 2rem;
 	padding: 2rem;
+
 }
 
 .modal::backdrop{
@@ -122,17 +123,17 @@ nav{
 	margin-bottom: 1.5rem;
 }
 
-#new-project-modal>img{
+.modal>img{
 	align-self: flex-end;
 }
 
-#new-project-modal>form{
+.modal>form{
 	display: flex;
 	flex-direction: column;
 }
 
-#new-project-modal input,
-#new-project-modal textarea{
+.modal input,
+.modal textarea{
 	background-color: var(--BG-COLOUR);
 	font: inherit;
 	border: none;
@@ -141,16 +142,16 @@ nav{
 	margin-bottom: 1rem;
 }
 
-#new-project-modal textarea{
+.modal textarea{
 	resize: vertical;
 	min-height: 1.5rem;
 }
 
-#new-project-modal button{
+.modal button{
 	align-self: flex-end;
 	background-color: var(--ACCENT-1);
 	color: var(--MAIN-COLOUR);
-	width: fit-content;
+	width: 10ch;
 	font: inherit;
 	font-weight: bold;
 	cursor: pointer;
