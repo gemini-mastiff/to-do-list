@@ -8,6 +8,18 @@ console.log("Hello World!");
 let projects = [].concat(loadData());
 console.log(projects);
 
+const newProjectModal = document.querySelector("#new-project-modal");
+const newProjectOpenBtn = document.querySelector("#new-project-open");
+const newProjectSaveBtn = document.querySelector("#new-project-save");
+const newProjectCloseBtn = document.querySelector("#new-project-close");
+
+newProjectOpenBtn.addEventListener("click", () => {
+    newProjectModal.showModal();
+});
+
+newProjectCloseBtn.addEventListener("click", () => {
+    newProjectModal.close();
+});
 
 function updateNav(){
     generateNavprojects(projects);
