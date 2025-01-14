@@ -1,6 +1,6 @@
 import  { addNewprojects, newprojects, newProject, newToDoItem} from "./js/app-logic"
 import loadData from "./js/loadData.js";
-import { generateProjectPage, generateNavprojects } from "./js/DOM-manipulation.js";
+import { generateProjectPage, generateNavprojects } from "./js/DOM-generation.js";
 import "./styles.css";
 
 console.log("Hello World!");
@@ -20,5 +20,5 @@ function updateNav(){
     });
 }
 
-generateProjectPage(projects[0], content);
+generateProjectPage(projects[0]);
 updateNav()
