@@ -91,23 +91,24 @@ nav{
 /* NEW PROJECT DIALOG */
 
 .modal[open]{
+	box-sizing: border-box;
 	background-color: var(--MAIN-COLOUR);
 	width: 70vw;
-	position: absolute;
-	top: auto;
 	display: flex;
 	flex-direction: column;
 	border: none;
-	border-radius: 1rem;
+	border-radius: 2rem;
+	padding: 2rem;
 }
 
 .modal::backdrop{
-	background: rgb(0, 0, 0 / .4);
+	background: black;
+	opacity: .4;
 }
 
 #new-project-modal>h2{
 	font-size: 2rem;
-	margin-bottom: 1rem;
+	margin-bottom: 1.5rem;
 }
 
 #new-project-modal>img{
