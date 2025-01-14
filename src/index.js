@@ -1,4 +1,4 @@
-import  { addNewprojects, newprojects, newProject, newToDoItem} from "./js/app-logic"
+import  { newProject, newToDoItem} from "./js/app-logic"
 import loadData from "./js/loadData.js";
 import { generateProjectPage, generateNavprojects } from "./js/DOM-generation.js";
 import "./styles.css";
@@ -19,6 +19,14 @@ newProjectOpenBtn.addEventListener("click", () => {
 
 newProjectCloseBtn.addEventListener("click", () => {
     newProjectModal.close();
+});
+
+newProjectSaveBtn.addEventListener("click", () => {
+    const projectName = document.querySelector("#projectName").value;
+    const projectDesc = document.querySelector("#projectDescription").value;
+    const projectDeadline = document.querySelector("#projectDeadline").value;
+    projects.push(newProject(projectName, projectDesc, projectDeadline));
+    console.log(projects);
 });
 
 function updateNav(){
