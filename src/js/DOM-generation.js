@@ -22,14 +22,16 @@ function generateProjectPage(projects, index) {
     const projectHeader = document.createElement("h1");
     const editProjectBtn = document.createElement("img");
     const projectDesc = document.createElement("p");
+    const newProjectDeadline = document.createElement("p");
     projectHeader.textContent = project.name;
     editProjectBtn.src = editBtnSvg;
     editProjectBtn.alt = "Edit Project Button";
     editProjectBtn.classList.add("edit-project-button");
     editProjectBtn.id = "edit-project-open";
     projectDesc.textContent = project.description;
+    newProjectDeadline.textContent = project.deadline;
     projectHeader.append(editProjectBtn);
-    titleWrapper.append(projectHeader, projectDesc);
+    titleWrapper.append(projectHeader, newProjectDeadline, projectDesc);
 
     const toDoList = document.createElement("ul");
     toDoList.classList.add("to-do-list");
@@ -58,6 +60,7 @@ function generateProjectPage(projects, index) {
 
     const closeDialogBtn = document.createElement("img");
     closeDialogBtn.src = closeBtnSvg;
+    closeDialogBtn.classList.add("close-button")
     closeDialogBtn.alt = "Close Button";
     closeDialogBtn.id = "edit-project-close";
 
@@ -65,34 +68,38 @@ function generateProjectPage(projects, index) {
     dialogHeader.textContent = "Edit Project";
 
     const dialogForm = document.createElement("form");
-    dialogForm.method = "form";
+    dialogForm.method = "dialog";
 
     // NEEDS CLEANING UP!!
     const nameLabel = document.createElement("label");
     nameLabel.textContent = "Project Name:";
-    nameLabel.for = "projectName";
+    nameLabel.for = "newProjectName";
     const nameInput = document.createElement("input");
     nameInput.type = "text";
-    nameInput.name = "projectName";
-    nameInput.id = "projectName";
+    nameInput.name = "newProjectName";
+    nameInput.id = "newProjectName";
+    nameInput.value = project.name;
 
     const descriptionLabel = document.createElement("label");
     descriptionLabel.textContent = "Description:";
-    descriptionLabel.for = "projectDescription";
+    descriptionLabel.for = "newProjectDescription";
     const descriptionInput = document.createElement("textarea");
     descriptionInput.rows = "4";
-    descriptionInput.name = "projectDescription";
-    descriptionInput.id = "projectDescription";
+    descriptionInput.name = "newProjectDescription";
+    descriptionInput.id = "newProjectDescription";
+    descriptionInput.value = project.description;
 
     const deadlineLabel = document.createElement("label");
     deadlineLabel.textContent = "Deadline:";
-    deadlineLabel.for = "projectDeadline";
+    deadlineLabel.for = "newProjectDeadline";
     const deadlineInput = document.createElement("input");
     deadlineInput.type = "datetime-local";
-    deadlineInput.name = "projectDeadline";
-    deadlineInput.id = "projectDeadline";
+    deadlineInput.name = "newProjectDeadline";
+    deadlineInput.id = "newProjectDeadline";
+    deadlineInput.value = project.deadline;
 
     const saveProjectBtn = document.createElement("button");
+    saveProjectBtn.textContent = "Save";
     saveProjectBtn.id = "edit-project-save";
     saveProjectBtn.setAttribute("data-index", index);
 
@@ -137,12 +144,12 @@ The above fuction generates:
     <img src="./svg/window-close.svg" alt="Close Button" id="edit-project-close" class="close-button">
     <h2>Edit Project</h2>
     <form method="dialog">
-        <label for="projectName">Project Name:</label>
-        <input type="text" name="projectName" id="projectName">
-        <label for="projectDescription">Description:</label>
-        <textarea rows="3" name="projectDescription" id="projectDescription"></textarea>
-        <label for="projectDeadline">Deadline:</label>
-        <input type="datetime-local" name="projectDeadline" id="projectDeadline">
+        <label for="newProjectName">Project Name:</label>
+        <input type="text" name="newProjectName" id="newProjectName">
+        <label for="newProjectDescription">Description:</label>
+        <textarea rows="3" name="newProjectDescription" id="newProjectDescription"></textarea>
+        <label for="newProjectDeadline">Deadline:</label>
+        <input type="datetime-local" name="newProjectDeadline" id="newProjectDeadline">
         <button id="edit-project-save" data-index="x" >Save</button>
     </form>
 </dialog>
