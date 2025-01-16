@@ -8,13 +8,15 @@
                 "name":"Create an awesome looking page",
                 "description":"I need to get better at UX.",
                 "deadline":"2025-01-13T14:05",
-                "priority":"Low"
+                "priority":"Low",
+                "complete": "True"
             },
             {
                 "name":"Hook the DOM up to the data",
                 "description":"There's so many moving parts all of a sudden ;-;",
                 "deadline":"2025-01-13T14:05",
-                "priority":"Low"
+                "priority":"Low",
+                "complete": "False"
             }
         ]
     },
@@ -27,13 +29,15 @@
                 "name":"Memorise gendered endings",
                 "description":"WHY ARE THERE SO MANY",
                 "deadline":"2025-01-13T14:05",
-                "priority":"High"
+                "priority":"High",
+                "complete": "False"
             },
             {
                 "name":"Complete A1 course",
                 "description":"You've gotta start somewhere!",
                 "deadline":"2025-01-13T14:05",
-                "priority":"Ongoing"
+                "priority":"Ongoing",
+                "complete": "True"
             }
         ]
     }

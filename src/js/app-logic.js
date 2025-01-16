@@ -19,8 +19,8 @@ function generateNewProject(name, description, deadline) {
     return { name, description, deadline, toDoList, addToDoItem, delToDoItem };
 }
 
-function generateNewToDoItem(name, description, deadline, priority) {
-    return { name, description, deadline, priority };
+function generateNewToDoItem(name, description, deadline, priority, complete) {
+    return { name, description, deadline, priority, complete };
 } 
 
 const projects = projectsList()
