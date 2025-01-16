@@ -1,5 +1,6 @@
 import closeBtnSvg from "../svg/window-close.svg";
 import editBtnSvg from "../svg/dots-horizontal.svg";
+import toDoBtnSvg from "../svg/plus.svg";
 
 const navList = document.querySelector("#nav-projects-list");
 const content = document.querySelector("#content");
@@ -25,7 +26,7 @@ function generateProjectPage(projects, index) {
     const newProjectDeadline = document.createElement("p");
     projectHeader.textContent = project.name;
     editProjectBtn.src = editBtnSvg;
-    editProjectBtn.alt = "Edit Project Button";
+    editProjectBtn.alt = "Edit Project";
     editProjectBtn.classList.add("edit-project-button");
     editProjectBtn.id = "edit-project-open";
     projectDesc.textContent = project.description;
@@ -52,7 +53,19 @@ function generateProjectPage(projects, index) {
         toDoList.append(listItem);
     });
 
-    wrapper.append(titleWrapper, toDoList);
+    const newToDoBtn = document.createElement("button");
+    newToDoBtn.id = "new-to-do-open";
+    
+    const newToDoIcon = document.createElement("img");
+    newToDoIcon.src = toDoBtnSvg;
+    newToDoIcon.alt = "Add To-Do";
+
+    const newToDoP = document.createElement("p");
+    newToDoP.textContent = "Add To-Do";
+
+    newToDoBtn.append(newToDoIcon, newToDoP);
+
+    wrapper.append(titleWrapper, toDoList, newToDoBtn);
 
     const dialog = document.createElement("dialog");
     dialog.classList.add("modal");
