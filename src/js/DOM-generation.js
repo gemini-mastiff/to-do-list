@@ -9,6 +9,64 @@ function clearElement(element) {
     element.textContent = '';
 }
 
+function generateEditProjectDialog(project, index) {
+    const dialog = document.createElement("dialog");
+    dialog.classList.add("modal");
+    dialog.id = "edit-project-modal";
+
+    const closeDialogBtn = document.createElement("img");
+    closeDialogBtn.src = closeBtnSvg;
+    closeDialogBtn.classList.add("close-button")
+    closeDialogBtn.alt = "Close Button";
+    closeDialogBtn.id = "edit-project-close";
+
+    const dialogHeader = document.createElement("h2");
+    dialogHeader.textContent = "Edit Project";
+
+    const dialogForm = document.createElement("form");
+    dialogForm.id = "edit-project-form"
+    dialogForm.method = "dialog";
+
+    // NEEDS CLEANING UP!!
+    const nameLabel = document.createElement("label");
+    nameLabel.textContent = "Project Name:";
+    nameLabel.for = "newProjectName";
+    const nameInput = document.createElement("input");
+    nameInput.type = "text";
+    nameInput.name = "newProjectName";
+    nameInput.id = "newProjectName";
+    nameInput.defaultValue = project.name;
+
+    const descriptionLabel = document.createElement("label");
+    descriptionLabel.textContent = "Description:";
+    descriptionLabel.for = "newProjectDescription";
+    const descriptionInput = document.createElement("textarea");
+    descriptionInput.rows = "4";
+    descriptionInput.name = "newProjectDescription";
+    descriptionInput.id = "newProjectDescription";
+    descriptionInput.defaultValue = project.description;
+
+    const deadlineLabel = document.createElement("label");
+    deadlineLabel.textContent = "Deadline:";
+    deadlineLabel.for = "newProjectDeadline";
+    const deadlineInput = document.createElement("input");
+    deadlineInput.type = "datetime-local";
+    deadlineInput.name = "newProjectDeadline";
+    deadlineInput.id = "newProjectDeadline";
+    deadlineInput.defaultValue = project.deadline;
+
+    const saveProjectBtn = document.createElement("button");
+    saveProjectBtn.textContent = "Save";
+    saveProjectBtn.id = "edit-project-save";
+    saveProjectBtn.setAttribute("data-index", index);
+
+    dialogForm.append( nameLabel, nameInput, descriptionLabel, descriptionInput, deadlineLabel, deadlineInput, saveProjectBtn );
+
+    dialog.append( closeDialogBtn, dialogHeader, dialogForm );
+
+    return dialog;
+}
+
 function generateProjectPage(projects, index) {
     clearElement(content)
     const project = projects[index];
@@ -67,61 +125,9 @@ function generateProjectPage(projects, index) {
 
     wrapper.append(titleWrapper, toDoList, newToDoBtn);
 
-    const dialog = document.createElement("dialog");
-    dialog.classList.add("modal");
-    dialog.id = "edit-project-modal";
+    const editProjectDialog = generateEditProjectDialog(project, index);
 
-    const closeDialogBtn = document.createElement("img");
-    closeDialogBtn.src = closeBtnSvg;
-    closeDialogBtn.classList.add("close-button")
-    closeDialogBtn.alt = "Close Button";
-    closeDialogBtn.id = "edit-project-close";
-
-    const dialogHeader = document.createElement("h2");
-    dialogHeader.textContent = "Edit Project";
-
-    const dialogForm = document.createElement("form");
-    dialogForm.id = "edit-project-form"
-    dialogForm.method = "dialog";
-
-    // NEEDS CLEANING UP!!
-    const nameLabel = document.createElement("label");
-    nameLabel.textContent = "Project Name:";
-    nameLabel.for = "newProjectName";
-    const nameInput = document.createElement("input");
-    nameInput.type = "text";
-    nameInput.name = "newProjectName";
-    nameInput.id = "newProjectName";
-    nameInput.defaultValue = project.name;
-
-    const descriptionLabel = document.createElement("label");
-    descriptionLabel.textContent = "Description:";
-    descriptionLabel.for = "newProjectDescription";
-    const descriptionInput = document.createElement("textarea");
-    descriptionInput.rows = "4";
-    descriptionInput.name = "newProjectDescription";
-    descriptionInput.id = "newProjectDescription";
-    descriptionInput.defaultValue = project.description;
-
-    const deadlineLabel = document.createElement("label");
-    deadlineLabel.textContent = "Deadline:";
-    deadlineLabel.for = "newProjectDeadline";
-    const deadlineInput = document.createElement("input");
-    deadlineInput.type = "datetime-local";
-    deadlineInput.name = "newProjectDeadline";
-    deadlineInput.id = "newProjectDeadline";
-    deadlineInput.defaultValue = project.deadline;
-
-    const saveProjectBtn = document.createElement("button");
-    saveProjectBtn.textContent = "Save";
-    saveProjectBtn.id = "edit-project-save";
-    saveProjectBtn.setAttribute("data-index", index);
-
-    dialogForm.append(nameLabel, nameInput,descriptionLabel, descriptionInput, deadlineLabel, deadlineInput, saveProjectBtn);
-
-    dialog.append(closeDialogBtn, dialogHeader, dialogForm);
-
-    content.append(wrapper, dialog);
+    content.append(wrapper, editProjectDialog);
 }
 
 {/* 
