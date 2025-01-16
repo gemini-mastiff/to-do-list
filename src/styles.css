@@ -90,12 +90,26 @@ nav{
 	height: 3rem;
 	background: var(--ACCENT-1);
 	color: var(--MAIN-COLOUR);
-	border: none;
 	font: inherit;
 	font-weight: bold;
+	border: none;
 	cursor: pointer;
 	margin-top: auto;
 	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.2rem;
+}
+
+#new-project-open>img{
+	filter: invert(83%) sepia(63%) saturate(2%) hue-rotate(20deg) brightness(105%) contrast(98%);
+	height: 30px;
+	width: 30px;
+}
+
+#new-project-open>p{
+	margin-top: 2px;
 }
 
 /* MODAL DIALOG */
