@@ -29,7 +29,7 @@ function generateProjectPage(projects, index) {
     editProjectBtn.classList.add("edit-project-button");
     editProjectBtn.id = "edit-project-open";
     projectDesc.textContent = project.description;
-    newProjectDeadline.textContent = project.deadline;
+    newProjectDeadline.textContent = `Due: ${project.deadline}`;
     projectHeader.append(editProjectBtn);
     titleWrapper.append(projectHeader, newProjectDeadline, projectDesc);
 
@@ -68,6 +68,7 @@ function generateProjectPage(projects, index) {
     dialogHeader.textContent = "Edit Project";
 
     const dialogForm = document.createElement("form");
+    dialogForm.id = "edit-project-form"
     dialogForm.method = "dialog";
 
     // NEEDS CLEANING UP!!
@@ -78,7 +79,7 @@ function generateProjectPage(projects, index) {
     nameInput.type = "text";
     nameInput.name = "newProjectName";
     nameInput.id = "newProjectName";
-    nameInput.value = project.name;
+    nameInput.defaultValue = project.name;
 
     const descriptionLabel = document.createElement("label");
     descriptionLabel.textContent = "Description:";
@@ -87,7 +88,7 @@ function generateProjectPage(projects, index) {
     descriptionInput.rows = "4";
     descriptionInput.name = "newProjectDescription";
     descriptionInput.id = "newProjectDescription";
-    descriptionInput.value = project.description;
+    descriptionInput.defaultValue = project.description;
 
     const deadlineLabel = document.createElement("label");
     deadlineLabel.textContent = "Deadline:";
@@ -96,7 +97,7 @@ function generateProjectPage(projects, index) {
     deadlineInput.type = "datetime-local";
     deadlineInput.name = "newProjectDeadline";
     deadlineInput.id = "newProjectDeadline";
-    deadlineInput.value = project.deadline;
+    deadlineInput.defaultValue = project.deadline;
 
     const saveProjectBtn = document.createElement("button");
     saveProjectBtn.textContent = "Save";
