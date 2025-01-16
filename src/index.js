@@ -13,12 +13,14 @@ function updateProjectPage(index) {
     const editProjectOpenBtn = document.querySelector("#edit-project-open");
     const editProjectSaveBtn = document.querySelector("#edit-project-save");
     const editProjectCloseBtn = document.querySelector("#edit-project-close");
+    const editProjectForm = document.querySelector("#edit-project-form");
 
     editProjectOpenBtn.addEventListener("click", () => {
         editProjectModal.showModal();
     });
     
     editProjectCloseBtn.addEventListener("click", () => {
+        editProjectForm.reset()
         editProjectModal.close();
     });
 
@@ -52,12 +54,14 @@ const newProjectModal = document.querySelector("#new-project-modal");
 const newProjectOpenBtn = document.querySelector("#new-project-open");
 const newProjectSaveBtn = document.querySelector("#new-project-save");
 const newProjectCloseBtn = document.querySelector("#new-project-close");
+const newProjectForm = document.querySelector("#new-project-form");
 
 newProjectOpenBtn.addEventListener("click", () => {
     newProjectModal.showModal();
 });
 
 newProjectCloseBtn.addEventListener("click", () => {
+    newProjectForm.reset();
     newProjectModal.close();
 });
 
