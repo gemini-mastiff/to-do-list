@@ -12,7 +12,7 @@ function clearElement(element) {
 function generateEditProjectDialog(project, index) {
     const dialog = document.createElement("dialog");
     dialog.classList.add("modal");
-    dialog.id = "edit-project-modal";
+    dialog.id = "edit-project-dialog";
 
     const closeDialogBtn = document.createElement("img");
     closeDialogBtn.src = closeBtnSvg;
@@ -67,7 +67,59 @@ function generateEditProjectDialog(project, index) {
     return dialog;
 }
 
-//function generateNewToDoDialog()
+function generateNewToDoDialog(){
+    const dialog = document.createElement("dialog");
+    dialog.classList.add("modal");
+    dialog.id = "new-to-do-dialog";
+
+    const closeDialogBtn = document.createElement("img");
+    closeDialogBtn.src = closeBtnSvg;
+    closeDialogBtn.classList.add("close-button")
+    closeDialogBtn.alt = "Close Button";
+    closeDialogBtn.id = "new-to-do-close";
+
+    const dialogHeader = document.createElement("h2");
+    dialogHeader.textContent = "New To-Do";
+
+    const dialogForm = document.createElement("form");
+    dialogForm.id = "new-to-do-form"
+    dialogForm.method = "dialog";
+
+    // NEEDS CLEANING UP!!
+    const nameLabel = document.createElement("label");
+    nameLabel.textContent = "Task:";
+    nameLabel.for = "newToDoName";
+    const nameInput = document.createElement("input");
+    nameInput.type = "text";
+    nameInput.name = "newToDoName";
+    nameInput.id = "newToDoName";
+
+    const descriptionLabel = document.createElement("label");
+    descriptionLabel.textContent = "Description:";
+    descriptionLabel.for = "newToDoDescription";
+    const descriptionInput = document.createElement("textarea");
+    descriptionInput.rows = "4";
+    descriptionInput.name = "newToDoDescription";
+    descriptionInput.id = "newToDoDescription";
+
+    const deadlineLabel = document.createElement("label");
+    deadlineLabel.textContent = "Deadline:";
+    deadlineLabel.for = "newToDoDeadline";
+    const deadlineInput = document.createElement("input");
+    deadlineInput.type = "datetime-local";
+    deadlineInput.name = "newToDoDeadline";
+    deadlineInput.id = "newToDoDeadline";
+
+    const saveProjectBtn = document.createElement("button");
+    saveProjectBtn.textContent = "Save";
+    saveProjectBtn.id = "new-to-do-save";
+
+    dialogForm.append( nameLabel, nameInput, descriptionLabel, descriptionInput, deadlineLabel, deadlineInput, saveProjectBtn );
+
+    dialog.append( closeDialogBtn, dialogHeader, dialogForm );
+
+    return dialog;
+}
 
 function generateProjectPage(projects, index) {
     clearElement(content)
@@ -102,6 +154,7 @@ function generateProjectPage(projects, index) {
 
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
+        checkbox.id = "to-do-checkbox";
         checkbox.checked = toDo.complete ? true : false;
 
         const header = document.createElement("h2");
@@ -126,8 +179,9 @@ function generateProjectPage(projects, index) {
     wrapper.append(titleWrapper, toDoList, newToDoBtn);
 
     const editProjectDialog = generateEditProjectDialog(project, index);
+    const newToDoDialog = generateNewToDoDialog();
 
-    content.append(wrapper, editProjectDialog);
+    content.append(wrapper, editProjectDialog, newToDoDialog);
 }
 
 {/* 
