@@ -153,7 +153,8 @@ nav{
 }
 
 .modal input,
-.modal textarea{
+.modal textarea,
+.modal select{
 	background-color: var(--BG-COLOUR);
 	font: inherit;
 	border: none;
@@ -162,14 +163,22 @@ nav{
 }
 
 .modal input:focus,
-.modal textarea:focus{
-	outline: none;
-	border: 2px solid var(--ACCENT-1);
+.modal textarea:focus,
+.modal select:focus{
+	outline: 2px solid var(--ACCENT-1);
 }
 
 .modal textarea{
 	resize: vertical;
 	min-height: 1.5rem;
+}
+
+.modal select{
+	appearance: none;
+	background-image: url(svg/chevron-down.svg);
+	background-repeat: no-repeat;
+	background-position: right 5px center;
+	background-size: 28px;
 }
 
 .bottom-row{
@@ -180,6 +189,7 @@ nav{
 .bottom-row>.input-wrapper{
 	flex: 1;
 }
+
 
 .modal button{
 	align-self: flex-end;
