@@ -26,16 +26,22 @@
     </div>
 </nav>
 
-<dialog class="modal" id="new-project-modal">
+<dialog class="modal" id="new-project-dialog">
     <img src="./svg/window-close.svg" alt="Close Button" id="new-project-close" class="close-button">
     <h2>New Project</h2>
     <form id="new-project-form" method="dialog">
-        <label for="projectName">Project Name:</label>
-        <input type="text" name="projectName" id="projectName">
-        <label for="projectDescription">Description:</label>
-        <textarea rows="3" name="projectDescription" id="projectDescription"></textarea>
-        <label for="projectDeadline">Deadline:</label>
-        <input type="datetime-local" name="projectDeadline" id="projectDeadline">
+        <div class="input-wrapper">
+            <label for="projectName">Project Name:</label>
+            <input type="text" name="projectName" id="projectName">
+        </div>
+        <div class="input-wrapper">
+            <label for="projectDescription">Description:</label>
+            <textarea rows="3" name="projectDescription" id="projectDescription"></textarea>
+        </div>
+        <div class="input-wrapper">
+            <label for="projectDeadline">Deadline:</label>
+            <input type="datetime-local" name="projectDeadline" id="projectDeadline">
+        </div>
         <button id="new-project-save">Save</button>
     </form>
 </dialog>
