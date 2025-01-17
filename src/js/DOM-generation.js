@@ -5,8 +5,70 @@ import toDoBtnSvg from "../svg/plus.svg";
 const navList = document.querySelector("#nav-projects-list");
 const content = document.querySelector("#content");
 
+
 function clearElement(element) {
     element.textContent = '';
+}
+
+
+function newInputElement(text, name, type, defaultValue = ''){
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("input-wrapper");
+
+    const label = document.createElement("label");
+    label.textContent = `${text}:`;
+    label.htmlFor = name;
+
+    const input = document.createElement("input");
+    input.type = type;
+    input.name = name;
+    input.id = name;
+    input.defaultValue = defaultValue;
+
+    wrapper.append(label, input);
+    return wrapper;
+}
+
+function newTextAreaElement(text, name, rows, defaultValue = ''){
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("input-wrapper");
+
+    const label = document.createElement("label");
+    label.textContent = `${text}:`;
+    label.htmlFor = name;
+
+    const textarea = document.createElement("textarea");
+    textarea.rows = rows;
+    textarea.name = name;
+    textarea.id = name;
+    textarea.defaultValue = defaultValue;
+
+    wrapper.append(label, textarea);
+    return wrapper;
+}
+
+function newSelectElement(text, name, optionsArray){
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("input-wrapper");
+
+    const label = document.createElement("label");
+    label.textContent = `${text}:`;
+    label.htmlFor = name;
+
+    const select = document.createElement("select");
+    select.name = name;
+    select.id = name;
+
+    optionsArray.forEach((option) => {
+        const selectItem = document.createElement("option");
+        selectItem.value = option;
+        selectItem.textContent = option;
+
+        select.append(selectItem);
+    })
+
+    wrapper.append(label, select);
+    return wrapper;
 }
 
 function generateEditProjectDialog(project, index) {
@@ -27,40 +89,18 @@ function generateEditProjectDialog(project, index) {
     dialogForm.id = "edit-project-form"
     dialogForm.method = "dialog";
 
-    // NEEDS CLEANING UP!!
-    const nameLabel = document.createElement("label");
-    nameLabel.textContent = "Project Name:";
-    nameLabel.for = "newProjectName";
-    const nameInput = document.createElement("input");
-    nameInput.type = "text";
-    nameInput.name = "newProjectName";
-    nameInput.id = "newProjectName";
-    nameInput.defaultValue = project.name;
+    const projectName = newInputElement("Project Name", "newProjectName", "text", project.name);
 
-    const descriptionLabel = document.createElement("label");
-    descriptionLabel.textContent = "Description:";
-    descriptionLabel.for = "newProjectDescription";
-    const descriptionInput = document.createElement("textarea");
-    descriptionInput.rows = "4";
-    descriptionInput.name = "newProjectDescription";
-    descriptionInput.id = "newProjectDescription";
-    descriptionInput.defaultValue = project.description;
+    const projectDescription = newTextAreaElement("Description", "newProjectDescription", "4", project.description);
 
-    const deadlineLabel = document.createElement("label");
-    deadlineLabel.textContent = "Deadline:";
-    deadlineLabel.for = "newProjectDeadline";
-    const deadlineInput = document.createElement("input");
-    deadlineInput.type = "datetime-local";
-    deadlineInput.name = "newProjectDeadline";
-    deadlineInput.id = "newProjectDeadline";
-    deadlineInput.defaultValue = project.deadline;
+    const projectDeadline = newInputElement("Deadline", "newProjectDeadline", "datetime-local", project.deadline);
 
     const saveProjectBtn = document.createElement("button");
     saveProjectBtn.textContent = "Save";
     saveProjectBtn.id = "edit-project-save";
     saveProjectBtn.setAttribute("data-index", index);
 
-    dialogForm.append( nameLabel, nameInput, descriptionLabel, descriptionInput, deadlineLabel, deadlineInput, saveProjectBtn );
+    dialogForm.append( projectName, projectDescription, projectDeadline, saveProjectBtn );
 
     dialog.append( closeDialogBtn, dialogHeader, dialogForm );
 
@@ -86,35 +126,19 @@ function generateNewToDoDialog(){
     dialogForm.method = "dialog";
 
     // NEEDS CLEANING UP!!
-    const nameLabel = document.createElement("label");
-    nameLabel.textContent = "Task:";
-    nameLabel.for = "newToDoName";
-    const nameInput = document.createElement("input");
-    nameInput.type = "text";
-    nameInput.name = "newToDoName";
-    nameInput.id = "newToDoName";
+    const toDoName = newInputElement("Task", "newToDoName", "text");
 
-    const descriptionLabel = document.createElement("label");
-    descriptionLabel.textContent = "Description:";
-    descriptionLabel.for = "newToDoDescription";
-    const descriptionInput = document.createElement("textarea");
-    descriptionInput.rows = "4";
-    descriptionInput.name = "newToDoDescription";
-    descriptionInput.id = "newToDoDescription";
+    const toDoDescription = newTextAreaElement("Description", "newToDoDescription", "4");
 
-    const deadlineLabel = document.createElement("label");
-    deadlineLabel.textContent = "Deadline:";
-    deadlineLabel.for = "newToDoDeadline";
-    const deadlineInput = document.createElement("input");
-    deadlineInput.type = "datetime-local";
-    deadlineInput.name = "newToDoDeadline";
-    deadlineInput.id = "newToDoDeadline";
+    const toDoDeadline = newInputElement("Deadline", "newToDoDeadline", "datetime-local");
+
+    const toDoPriority = newSelectElement("Priority", "newToDoPriority", ["High", "Low", "Daily", "Anytime"]);
 
     const saveProjectBtn = document.createElement("button");
     saveProjectBtn.textContent = "Save";
     saveProjectBtn.id = "new-to-do-save";
 
-    dialogForm.append( nameLabel, nameInput, descriptionLabel, descriptionInput, deadlineLabel, deadlineInput, saveProjectBtn );
+    dialogForm.append( toDoName, toDoDescription, toDoDeadline, toDoPriority, saveProjectBtn );
 
     dialog.append( closeDialogBtn, dialogHeader, dialogForm );
 
@@ -143,7 +167,7 @@ function generateProjectPage(projects, index) {
     projectDesc.textContent = project.description;
     const newProjectDeadline = document.createElement("p");
     newProjectDeadline.textContent = `Due: ${project.deadline}`;
-    
+
     projectHeader.append(editProjectBtn);
     titleWrapper.append(projectHeader, newProjectDeadline, projectDesc);
 
