@@ -67,6 +67,8 @@ function generateEditProjectDialog(project, index) {
     return dialog;
 }
 
+//function generateNewToDoDialog()
+
 function generateProjectPage(projects, index) {
     clearElement(content)
     const project = projects[index];
@@ -100,6 +102,7 @@ function generateProjectPage(projects, index) {
 
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
+        checkbox.checked = toDo.complete ? true : false;
 
         const header = document.createElement("h2");
         header.textContent = toDo.name;
@@ -113,14 +116,11 @@ function generateProjectPage(projects, index) {
 
     const newToDoBtn = document.createElement("button");
     newToDoBtn.id = "new-to-do-open";
-    
     const newToDoIcon = document.createElement("img");
     newToDoIcon.src = toDoBtnSvg;
     newToDoIcon.alt = "Add To-Do";
-
     const newToDoP = document.createElement("p");
     newToDoP.textContent = "Add To-Do";
-
     newToDoBtn.append(newToDoIcon, newToDoP);
 
     wrapper.append(titleWrapper, toDoList, newToDoBtn);
