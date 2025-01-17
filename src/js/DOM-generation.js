@@ -125,7 +125,6 @@ function generateNewToDoDialog(){
     dialogForm.id = "new-to-do-form"
     dialogForm.method = "dialog";
 
-    // NEEDS CLEANING UP!!
     const toDoName = newInputElement("Task", "newToDoName", "text");
 
     const toDoDescription = newTextAreaElement("Description", "newToDoDescription", "4");
@@ -134,11 +133,15 @@ function generateNewToDoDialog(){
 
     const toDoPriority = newSelectElement("Priority", "newToDoPriority", ["High", "Low", "Daily", "Anytime"]);
 
+    const bottomRow = document.createElement("div");
+    bottomRow.classList.add("bottom-row");
+    bottomRow.append( toDoDeadline, toDoPriority )
+
     const saveProjectBtn = document.createElement("button");
     saveProjectBtn.textContent = "Save";
     saveProjectBtn.id = "new-to-do-save";
 
-    dialogForm.append( toDoName, toDoDescription, toDoDeadline, toDoPriority, saveProjectBtn );
+    dialogForm.append( toDoName, toDoDescription, bottomRow, saveProjectBtn );
 
     dialog.append( closeDialogBtn, dialogHeader, dialogForm );
 
