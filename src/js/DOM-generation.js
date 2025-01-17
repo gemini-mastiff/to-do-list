@@ -122,9 +122,9 @@ function generateNewToDoDialog(){
 }
 
 function generateProjectPage(projects, index) {
-    clearElement(content)
-    const project = projects[index];
+    clearElement(content);
 
+    const project = projects[index];
     const toDoArray = project.toDoList;
 
     const wrapper = document.createElement("div");
@@ -133,16 +133,17 @@ function generateProjectPage(projects, index) {
     const titleWrapper = document.createElement("div");
     titleWrapper.classList.add("title-wrapper");
     const projectHeader = document.createElement("h1");
-    const editProjectBtn = document.createElement("img");
-    const projectDesc = document.createElement("p");
-    const newProjectDeadline = document.createElement("p");
     projectHeader.textContent = project.name;
+    const editProjectBtn = document.createElement("img");
     editProjectBtn.src = editBtnSvg;
     editProjectBtn.alt = "Edit Project";
     editProjectBtn.classList.add("edit-project-button");
     editProjectBtn.id = "edit-project-open";
+    const projectDesc = document.createElement("p");
     projectDesc.textContent = project.description;
+    const newProjectDeadline = document.createElement("p");
     newProjectDeadline.textContent = `Due: ${project.deadline}`;
+    
     projectHeader.append(editProjectBtn);
     titleWrapper.append(projectHeader, newProjectDeadline, projectDesc);
 
