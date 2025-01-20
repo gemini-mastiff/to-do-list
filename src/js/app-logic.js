@@ -14,8 +14,6 @@ function projectsList() {
 function generateNewProject(name, description, deadline) {
     const toDoList = [];
 
-    const getToDoList = () => toDoList;
-
     const addToDoItem = (toDoItem) => toDoList.push(toDoItem);
     const delToDoItem = (toDoIndex) => toDoList.splice(toDoIndex, 1);
 
