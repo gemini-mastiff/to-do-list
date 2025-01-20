@@ -68,6 +68,18 @@ function updateProjectPage(index) {
         newToDoForm.reset()
         newToDoDialog.close();
     });
+
+    const allToDos = document.querySelectorAll(".to-do-item");
+    allToDos.forEach((toDo) => {
+        const toDoIndex = toDo.dataset.index;
+        const checkbox = toDo.querySelector("#to-do-checkbox");
+        const currentToDoItem = projects.getProjectsArray()[index].toDoList[toDoIndex];
+
+        checkbox.addEventListener("change", () => {
+            currentToDoItem.complete = checkbox.checked ? true : false;
+            console.log(currentToDoItem);
+        });
+    });
 }
 
 function updateNav(){

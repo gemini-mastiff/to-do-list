@@ -180,7 +180,11 @@ function generateProjectPage(projects, index) {
     toDoList.classList.add("to-do-list");
 
     toDoArray.forEach((toDo) => {
+        const toDoIndex = toDoArray.indexOf(toDo);
+
         const listItem = document.createElement("li");
+        listItem.setAttribute("data-index", toDoIndex);
+        listItem.classList.add("to-do-item");
 
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
