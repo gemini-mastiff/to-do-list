@@ -19,10 +19,25 @@ function storageAvailable(type) {
     }
 }
 
+function parseData(data) {
+
+  data.forEach((object) => {
+    object.addToDoItem = function(toDoItem) {
+      this.toDoList.push(toDoItem);
+    }
+    object.delToDoItem = function(toDoIndex) {
+      this.toDoList.splice(toDoIndex, 1);
+    }
+  });
+
+  return data;
+}
+
 export default function() {
     if (storageAvailable("localStorage")) {
         if(!localStorage.getItem("folders")) {
-            return defaultData;
+            console.log(defaultData);
+            return parseData(defaultData);
         } else {
             return localStorage.getItem("folders");
         }
