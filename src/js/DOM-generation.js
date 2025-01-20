@@ -73,7 +73,45 @@ function newSelectElement(text, name, optionsArray){
 }
 
 
-function generateEditProjectDialog(project, index) {
+function generateNewProjectDialog() {
+    const newProjectDialog = document.createElement("dialog");
+    newProjectDialog.classList.add("modal");
+    newProjectDialog.id = "new-project-dialog";
+
+    const closeDialogBtn = document.createElement("img");
+    closeDialogBtn.src = closeBtnSvg;
+    closeDialogBtn.classList.add("close-button")
+    closeDialogBtn.alt = "Close Button";
+    closeDialogBtn.id = "new-project-close";
+
+    const dialogHeader = document.createElement("h2");
+    dialogHeader.textContent = "Edit Project";
+
+    const dialogForm = document.createElement("form");
+    dialogForm.id = "new-project-form"
+    dialogForm.method = "dialog";
+
+    const projectName = newInputElement("Project Name", "newProjectName", "text");
+
+    const projectDescription = newTextAreaElement("Description", "newProjectDescription", "4");
+
+    const projectDeadline = newInputElement("Deadline", "newProjectDeadline", "datetime-local");
+
+    const saveProjectBtn = document.createElement("button");
+    saveProjectBtn.textContent = "Save";
+    saveProjectBtn.id = "new-project-save";
+
+    newProjectDialog.addEventListener("close", () => {
+        clearElement(dialog);
+    });
+
+    dialogForm.append( projectName, projectDescription, projectDeadline, saveProjectBtn );
+
+    newProjectDialog.append( closeDialogBtn, dialogHeader, dialogForm );
+    dialog.append(newProjectDialog);
+}
+
+function generateEditProjectDialog(project) {
     const editProjectDialog = document.createElement("dialog");
     editProjectDialog.classList.add("modal");
     editProjectDialog.id = "edit-project-dialog";
@@ -100,7 +138,6 @@ function generateEditProjectDialog(project, index) {
     const saveProjectBtn = document.createElement("button");
     saveProjectBtn.textContent = "Save";
     saveProjectBtn.id = "edit-project-save";
-    saveProjectBtn.setAttribute("data-index", index);
 
     editProjectDialog.addEventListener("close", () => {
         clearElement(dialog);
@@ -222,52 +259,6 @@ function generateProjectPage(projects, index) {
     content.append(wrapper);
 }
 
-{/* 
-The above fuction generates:
-
-<div id="content">
-    <div class="project-page-wrapper">
-        <div class="title-wrapper">
-            <h1>Project Title</h1>
-            <img src="./svg/dots-horizontal.svg" alt"Edit Project" id="edit-project-open" class="edit-project-button">
-            <p>This is the description of the Project.</p>
-        </div>
-        <ul class="to-do-list">
-            <li>
-                <input type="checkbox">
-                <h2>To Do 1</h2>
-                <p>11 Jan 13:00</p>
-            </li>
-            <li>
-                <input type="checkbox">
-                <h2>To Do 2</h2>
-                <p>18 Feb 21:30</p>
-            </li>
-            <li>
-                <input type="checkbox">
-                <h2>To Do 3</h2>
-                <p>25 Dec</p>
-            </li>
-        </ul>
-    </div>
-</div>
-
-<dialog class="modal" id="edit-project-modal">
-    <img src="./svg/window-close.svg" alt="Close Button" id="edit-project-close" class="close-button">
-    <h2>Edit Project</h2>
-    <form method="dialog">
-        <label for="newProjectName">Project Name:</label>
-        <input type="text" name="newProjectName" id="newProjectName">
-        <label for="newProjectDescription">Description:</label>
-        <textarea rows="3" name="newProjectDescription" id="newProjectDescription"></textarea>
-        <label for="newProjectDeadline">Deadline:</label>
-        <input type="datetime-local" name="newProjectDeadline" id="newProjectDeadline">
-        <button id="edit-project-save" data-index="x" >Save</button>
-    </form>
-</dialog>
-
-*/}
-
 function generateNavprojects(projects) {
     clearElement(navList);
 
@@ -285,13 +276,4 @@ function generateNavprojects(projects) {
     });
 }
 
-{/* 
-The above function generates:
-
-<div id="nav-projects-list">
-    <div class="nav-project" data-index="0">Create a to-do list app</div>
-    <div class="nav-project" data-index="1">Learn German</div>
-</div>
-*/}
-
-export { generateProjectPage, generateNavprojects, generateEditProjectDialog, generateNewToDoDialog }
+export { generateProjectPage, generateNavprojects, generateNewProjectDialog, generateEditProjectDialog, generateNewToDoDialog }

@@ -1,5 +1,5 @@
 import  { projects, generateNewProject, generateNewToDoItem } from "./js/app-logic"
-import { generateProjectPage, generateNavprojects, generateEditProjectDialog, generateNewToDoDialog } from "./js/DOM-generation.js";
+import { generateProjectPage, generateNavprojects, generateNewProjectDialog, generateEditProjectDialog, generateNewToDoDialog } from "./js/DOM-generation.js";
 import "./styles.css";
 
 console.log(projects.getProjectsArray());
@@ -25,15 +25,13 @@ function updateProjectPage(index) {
         editProjectSaveBtn.addEventListener("click", (event) => {
             event.preventDefault();
 
-            const index = editProjectSaveBtn.dataset.index;
-            
             currentProject.name = document.querySelector("#newProjectName").value;
             currentProject.description = document.querySelector("#newProjectDescription").value;
             currentProject.deadline = document.querySelector("#newProjectDeadline").value;
             
             updateNav();
             updateProjectPage(index);
-            editProjectDialog.close()
+            editProjectDialog.close();
         });
     });
 
@@ -92,37 +90,36 @@ function updateNav(){
     });
 }
 
-const newProjectDialog = document.querySelector("#new-project-dialog");
-const newProjectOpenBtn = document.querySelector("#new-project-open");
-const newProjectSaveBtn = document.querySelector("#new-project-save");
-const newProjectCloseBtn = document.querySelector("#new-project-close");
-const newProjectForm = document.querySelector("#new-project-form");
+document.addEventListener("DOMContentLoaded", () => {
+    const newProjectOpenBtn = document.querySelector("#new-project-open");
+    newProjectOpenBtn.addEventListener("click", () => {
+        generateNewProjectDialog();
 
-newProjectOpenBtn.addEventListener("click", () => {
-    newProjectDialog.showModal();
-});
+        const newProjectDialog = document.querySelector("#new-project-dialog");
+        newProjectDialog.showModal();
 
-newProjectCloseBtn.addEventListener("click", () => {
-    newProjectForm.reset();
-    newProjectDialog.close();
-});
-
-newProjectSaveBtn.addEventListener("click", (event) => {
-    event.preventDefault();
-
-    const projectName = document.querySelector("#projectName").value;
-    const projectDesc = document.querySelector("#projectDescription").value;
-    const projectDeadline = document.querySelector("#projectDeadline").value;
-
-    const newProject = generateNewProject(projectName, projectDesc, projectDeadline);
-    projects.addProject(newProject);
-    console.log(projects.getProjectsArray());
-
-    updateNav();
-    updateProjectPage(projects.getProjectsArray().indexOf(newProject));
-
-    newProjectForm.reset();
-    newProjectDialog.close();
+        const newProjectCloseBtn = document.querySelector("#new-project-close");
+        newProjectCloseBtn.addEventListener("click", () => {
+            newProjectDialog.close();
+        });
+        
+        const newProjectSaveBtn = document.querySelector("#new-project-save");
+        newProjectSaveBtn.addEventListener("click", (event) => {
+            event.preventDefault();
+        
+            const projectName = document.querySelector("#projectName").value;
+            const projectDesc = document.querySelector("#projectDescription").value;
+            const projectDeadline = document.querySelector("#projectDeadline").value;
+        
+            const newProject = generateNewProject(projectName, projectDesc, projectDeadline);
+            projects.addProject(newProject);
+            console.log(projects.getProjectsArray());
+        
+            updateNav();
+            updateProjectPage(projects.getProjectsArray().indexOf(newProject));
+            newProjectDialog.close();
+        });
+    });
 });
 
 updateProjectPage(0);
