@@ -71,6 +71,7 @@ function newSelectElement(text, name, optionsArray){
     return wrapper;
 }
 
+
 function generateEditProjectDialog(project, index) {
     const dialog = document.createElement("dialog");
     dialog.classList.add("modal");
@@ -147,6 +148,7 @@ function generateNewToDoDialog(){
 
     return dialog;
 }
+
 
 function generateProjectPage(projects, index) {
     clearElement(content);
