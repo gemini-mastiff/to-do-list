@@ -33,7 +33,7 @@ function updateProjectPage(index) {
         project.deadline = document.querySelector("#newProjectDeadline").value;
         
         updateNav();
-        updateProjectPage(projects.getProjectsArray()[index]);
+        updateProjectPage(index);
     });
 
     const newToDoDialog = document.querySelector("#new-to-do-dialog");
