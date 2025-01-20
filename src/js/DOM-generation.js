@@ -4,6 +4,7 @@ import toDoBtnSvg from "../svg/plus.svg";
 
 const navList = document.querySelector("#nav-projects-list");
 const content = document.querySelector("#content");
+const dialog = document.querySelector("#dialog");
 
 
 function clearElement(element) {
@@ -73,9 +74,9 @@ function newSelectElement(text, name, optionsArray){
 
 
 function generateEditProjectDialog(project, index) {
-    const dialog = document.createElement("dialog");
-    dialog.classList.add("modal");
-    dialog.id = "edit-project-dialog";
+    const editProjectDialog = document.createElement("dialog");
+    editProjectDialog.classList.add("modal");
+    editProjectDialog.id = "edit-project-dialog";
 
     const closeDialogBtn = document.createElement("img");
     closeDialogBtn.src = closeBtnSvg;
@@ -101,17 +102,20 @@ function generateEditProjectDialog(project, index) {
     saveProjectBtn.id = "edit-project-save";
     saveProjectBtn.setAttribute("data-index", index);
 
+    editProjectDialog.addEventListener("close", () => {
+        clearElement(dialog);
+    })
+
     dialogForm.append( projectName, projectDescription, projectDeadline, saveProjectBtn );
 
-    dialog.append( closeDialogBtn, dialogHeader, dialogForm );
-
-    return dialog;
+    editProjectDialog.append( closeDialogBtn, dialogHeader, dialogForm );
+    dialog.append(editProjectDialog);
 }
 
 function generateNewToDoDialog(){
-    const dialog = document.createElement("dialog");
-    dialog.classList.add("modal");
-    dialog.id = "new-to-do-dialog";
+    const newToDoDialog = document.createElement("dialog");
+    newToDoDialog.classList.add("modal");
+    newToDoDialog.id = "new-to-do-dialog";
 
     const closeDialogBtn = document.createElement("img");
     closeDialogBtn.src = closeBtnSvg;
@@ -142,11 +146,14 @@ function generateNewToDoDialog(){
     saveProjectBtn.textContent = "Save";
     saveProjectBtn.id = "new-to-do-save";
 
+    newToDoDialog.addEventListener("close", () => {
+        clearElement(dialog);
+    })
+
     dialogForm.append( toDoName, toDoDescription, bottomRow, saveProjectBtn );
 
-    dialog.append( closeDialogBtn, dialogHeader, dialogForm );
-
-    return dialog;
+    newToDoDialog.append( closeDialogBtn, dialogHeader, dialogForm );
+    dialog.append( newToDoDialog );
 }
 
 
@@ -212,10 +219,7 @@ function generateProjectPage(projects, index) {
 
     wrapper.append(titleWrapper, toDoList, newToDoBtn);
 
-    const editProjectDialog = generateEditProjectDialog(project, index);
-    const newToDoDialog = generateNewToDoDialog();
-
-    content.append(wrapper, editProjectDialog, newToDoDialog);
+    content.append(wrapper);
 }
 
 {/* 
@@ -290,4 +294,4 @@ The above function generates:
 </div>
 */}
 
-export { generateProjectPage, generateNavprojects }
+export { generateProjectPage, generateNavprojects, generateEditProjectDialog, generateNewToDoDialog }
