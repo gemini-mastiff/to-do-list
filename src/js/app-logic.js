@@ -19,10 +19,12 @@ function generateNewProject(name, description, deadline) {
     const addToDoItem = (toDoItem) => toDoList.push(toDoItem);
     const delToDoItem = (toDoIndex) => toDoList.splice(toDoIndex, 1);
 
-    return { name, description, deadline, getToDoList, addToDoItem, delToDoItem };
+    return { name, description, deadline, toDoList, addToDoItem, delToDoItem };
 }
 
-function generateNewToDoItem(name, description, deadline, priority, complete) {
+function generateNewToDoItem(name, description, deadline, priority) {
+    const complete = false;
+
     return { name, description, deadline, priority, complete };
 } 
 
