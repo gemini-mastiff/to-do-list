@@ -74,7 +74,6 @@ function updateProjectPage(index) {
 
         checkbox.addEventListener("change", () => {
             currentToDoItem.complete = checkbox.checked ? true : false;
-            console.log(currentToDoItem);
         });
     });
 }
