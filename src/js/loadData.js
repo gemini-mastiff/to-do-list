@@ -36,7 +36,6 @@ function parseData(data) {
 export default function() {
     if (storageAvailable("localStorage")) {
         if(!localStorage.getItem("folders")) {
-            console.log(defaultData);
             return parseData(defaultData);
         } else {
             return localStorage.getItem("folders");

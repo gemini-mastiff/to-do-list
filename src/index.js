@@ -2,8 +2,6 @@ import  { projects, generateNewProject, generateNewToDoItem } from "./js/app-log
 import { generateProjectPage, generateNavprojects } from "./js/DOM-generation.js";
 import "./styles.css";
 
-console.log("Hello World!");
-
 console.log(projects.getProjectsArray());
 
 function updateProjectPage(index) {
