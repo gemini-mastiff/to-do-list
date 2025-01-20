@@ -7,10 +7,11 @@ console.log(projects.getProjectsArray());
 function updateProjectPage(index) {
     generateProjectPage(projects.getProjectsArray(), index);
 
+    const currentProject = projects.getProjectsArray()[index];
+
     const editProjectOpenBtn = document.querySelector("#edit-project-open");
     editProjectOpenBtn.addEventListener("click", () => {
-        const project = projects.getProjectsArray()[index];
-        generateEditProjectDialog(project, index);
+        generateEditProjectDialog(currentProject, index);
 
         const editProjectDialog = document.querySelector("#edit-project-dialog");
         editProjectDialog.showModal();
@@ -26,9 +27,9 @@ function updateProjectPage(index) {
 
             const index = editProjectSaveBtn.dataset.index;
             
-            project.name = document.querySelector("#newProjectName").value;
-            project.description = document.querySelector("#newProjectDescription").value;
-            project.deadline = document.querySelector("#newProjectDeadline").value;
+            currentProject.name = document.querySelector("#newProjectName").value;
+            currentProject.description = document.querySelector("#newProjectDescription").value;
+            currentProject.deadline = document.querySelector("#newProjectDeadline").value;
             
             updateNav();
             updateProjectPage(index);
@@ -58,7 +59,6 @@ function updateProjectPage(index) {
             const toDoPriority = document.querySelector("#newToDoPriority").value;
     
             const newToDo = generateNewToDoItem(toDoName, toDoDescription, toDoDeadline, toDoPriority);
-            const currentProject = projects.getProjectsArray()[index];
             currentProject.addToDoItem(newToDo);
             console.log(currentProject.toDoList);
             updateProjectPage(index);
@@ -72,7 +72,7 @@ function updateProjectPage(index) {
     allToDos.forEach((toDo) => {
         const toDoIndex = toDo.dataset.index;
         const checkbox = toDo.querySelector("#to-do-checkbox");
-        const currentToDoItem = projects.getProjectsArray()[index].toDoList[toDoIndex];
+        const currentToDoItem = currentProject.toDoList[toDoIndex];
 
         checkbox.addEventListener("change", () => {
             currentToDoItem.complete = checkbox.checked ? true : false;
