@@ -1,43 +1,36 @@
 [
     {
-        "name":"Create a to-do list app",
-        "description":"My next big project will be a to-do list application, it's gonna be a lot of learning!",
-        "deadline":"02/09/2025, 12:00 PM",
+        "name":"Learn to use the app!",
+        "description":"Acquaint yourself with how this app works!",
+        "deadline":"N/A",
         "toDoList":[
             {
-                "name":"Create an awesome looking page",
-                "description":"I need to get better at UX.",
-                "deadline":"02/09/2025, 12:00 PM",
-                "priority":"Low",
-                "complete": true
-            },
-            {
-                "name":"Hook the DOM up to the data",
-                "description":"There's so many moving parts all of a sudden ;-;",
-                "deadline":" 02/09/2025, 12:00 PM",
-                "priority":"Low",
-                "complete": false
-            }
-        ]
-    },
-    {
-        "name":"Learn German",
-        "description":"Why did they make this language so hard?",
-        "deadline":"02/09/2025, 12:00 PM",
-        "toDoList":[
-            {
-                "name":"Memorise gendered endings",
-                "description":"WHY ARE THERE SO MANY",
-                "deadline":"02/09/2025, 12:00 PM",
+                "name":"Create a new Project",
+                "description":"The bread and butter of any good to-do app.",
+                "deadline":"12/01/2025, 13:00 PM",
                 "priority":"High",
                 "complete": false
             },
             {
-                "name":"Complete A1 course",
-                "description":"You've gotta start somewhere!",
-                "deadline":"02/09/2025, 12:00 PM",
-                "priority":"Ongoing",
-                "complete": true
+                "name":"Edit/Delete a Project",
+                "description":"You won't be doing the same thing forever!",
+                "deadline":"12/01/2025, 13:00 PM",
+                "priority":"Low",
+                "complete": false
+            },
+            {
+                "name":"Add a new To-Do",
+                "description":"It's one thing after another...",
+                "deadline":"12/01/2025, 13:00 PM",
+                "priority":"Daily",
+                "complete": false
+            },
+            {
+                "name":"Edit/Delete a To-Do",
+                "description":"Gotta focus and prioritise!",
+                "deadline":"12/01/2025, 13:00 PM",
+                "priority":"Anytime",
+                "complete": false
             }
         ]
     }
