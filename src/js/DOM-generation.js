@@ -12,7 +12,7 @@ function clearElement(element) {
 }
 
 
-function newInputElement(text, name, type, defaultValue = ''){
+function newInputElement(text, name, type, defaultValue = '') {
     const wrapper = document.createElement("div");
     wrapper.classList.add("input-wrapper");
 
@@ -30,7 +30,7 @@ function newInputElement(text, name, type, defaultValue = ''){
     return wrapper;
 }
 
-function newTextAreaElement(text, name, rows, defaultValue = ''){
+function newTextAreaElement(text, name, rows, defaultValue = '') {
     const wrapper = document.createElement("div");
     wrapper.classList.add("input-wrapper");
 
@@ -48,7 +48,7 @@ function newTextAreaElement(text, name, rows, defaultValue = ''){
     return wrapper;
 }
 
-function newSelectElement(text, name, optionsArray){
+function newSelectElement(text, name, optionsArray) {
     const wrapper = document.createElement("div");
     wrapper.classList.add("input-wrapper");
 
@@ -149,7 +149,7 @@ function generateEditProjectDialog(project) {
     dialog.append(editProjectDialog);
 }
 
-function generateNewToDoDialog(){
+function generateNewToDoDialog() {
     const newToDoDialog = document.createElement("dialog");
     newToDoDialog.classList.add("modal");
     newToDoDialog.id = "new-to-do-dialog";
@@ -192,6 +192,8 @@ function generateNewToDoDialog(){
     newToDoDialog.append( closeDialogBtn, dialogHeader, dialogForm );
     dialog.append( newToDoDialog );
 }
+
+function generateEditToDoDialog() {}
 
 
 function generateProjectPage(projects, index) {
@@ -241,7 +243,12 @@ function generateProjectPage(projects, index) {
         const deadline = document.createElement("p");
         deadline.textContent = toDo.deadline;
 
-        listItem.append(checkbox, header, deadline);
+        const editToDoBtn = document.createElement("img");
+        editToDoBtn.src = editBtnSvg;
+        editToDoBtn.alt = "Edit To-Do";
+        editToDoBtn.classList.add("edit-to-do-open");
+
+        listItem.append(checkbox, header, deadline, editToDoBtn);
         toDoList.append(listItem);
     });
 

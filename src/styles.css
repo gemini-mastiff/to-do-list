@@ -256,6 +256,17 @@ main{
 	font-size: 0.8rem;
 }
 
+.to-do-list>li>img{
+	height: 20px;
+	width: 20px;
+	cursor: pointer;
+	visibility: hidden;
+}
+
+.to-do-list>li:hover>img{
+	visibility: visible;
+}
+
 #new-to-do-open{
 	height: 2rem;
 	background: var(--BG-COLOUR);
