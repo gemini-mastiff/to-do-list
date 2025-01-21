@@ -1,6 +1,14 @@
 import loadData from "./loadData.js";
 import { format } from "date-fns";
 
+function formatDate(date) {
+    if (date) {
+        return format(date, `dd/MM/yyyy - kk:mm`);
+    } else {
+        return "N/A";
+    }
+}
+
 function projectsList() {
     const projectsArray = [].concat(loadData());
 
@@ -15,7 +23,7 @@ function projectsList() {
 function generateNewProject(name, description, date) {
     const toDoList = [];
 
-    const deadline = format(date, `Pp`);
+    const deadline = formatDate(date);
 
     const addToDoItem = (toDoItem) => toDoList.push(toDoItem);
     const delToDoItem = (toDoIndex) => toDoList.splice(toDoIndex, 1);
@@ -25,8 +33,8 @@ function generateNewProject(name, description, date) {
 
 function generateNewToDoItem(name, description, date, priority) {
     const complete = false;
-
-    const deadline = format(date, `Pp`);
+    
+    const deadline = formatDate(date);
 
     return { name, description, deadline, priority, complete };
 } 
