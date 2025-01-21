@@ -108,6 +108,13 @@ function updateProjectPage(index) {
                 updateProjectPage(index);
                 editToDoDialog.close();
             });
+        });
+
+        const delToDoBtn = toDo.querySelector(".delete-to-do-button");
+        delToDoBtn.addEventListener("click", () => {
+            currentProject.delToDoItem(toDoIndex);
+            console.log(currentProject.toDoList)
+            updateProjectPage(index);
         })
     });
 }
