@@ -85,7 +85,7 @@ function generateNewProjectDialog() {
     closeDialogBtn.id = "new-project-close";
 
     const dialogHeader = document.createElement("h2");
-    dialogHeader.textContent = "Edit Project";
+    dialogHeader.textContent = "New Project";
 
     const dialogForm = document.createElement("form");
     dialogForm.id = "new-project-form"
@@ -193,7 +193,49 @@ function generateNewToDoDialog() {
     dialog.append( newToDoDialog );
 }
 
-function generateEditToDoDialog() {}
+function generateEditToDoDialog(toDo) {
+    const editToDoDialog = document.createElement("dialog");
+    editToDoDialog.classList.add("modal");
+    editToDoDialog.id = "edit-to-do-dialog";
+
+    const closeDialogBtn = document.createElement("img");
+    closeDialogBtn.src = closeBtnSvg;
+    closeDialogBtn.classList.add("close-button")
+    closeDialogBtn.alt = "Close Button";
+    closeDialogBtn.id = "edit-to-do-close";
+
+    const dialogHeader = document.createElement("h2");
+    dialogHeader.textContent = "Edit To-Do";
+
+    const dialogForm = document.createElement("form");
+    dialogForm.id = "edit-to-do-form"
+    dialogForm.method = "dialog";
+
+    const toDoName = newInputElement("Task", "newToDoName", "text", toDo.name);
+
+    const toDoDescription = newTextAreaElement("Description", "newToDoDescription", "4", toDo.description);
+
+    const toDoDeadline = newInputElement("Deadline", "newToDoDeadline", "datetime-local", toDo.deadline);
+
+    const toDoPriority = newSelectElement("Priority", "newToDoPriority", ["High", "Low", "Daily", "Anytime"]);
+
+    const bottomRow = document.createElement("div");
+    bottomRow.classList.add("bottom-row");
+    bottomRow.append( toDoDeadline, toDoPriority )
+
+    const saveProjectBtn = document.createElement("button");
+    saveProjectBtn.textContent = "Save";
+    saveProjectBtn.id = "edit-to-do-save";
+
+    editToDoDialog.addEventListener("close", () => {
+        clearElement(dialog);
+    })
+
+    dialogForm.append( toDoName, toDoDescription, bottomRow, saveProjectBtn );
+
+    editToDoDialog.append( closeDialogBtn, dialogHeader, dialogForm );
+    dialog.append( editToDoDialog );
+}
 
 
 function generateProjectPage(projects, index) {
@@ -283,4 +325,4 @@ function generateNavprojects(projects) {
     });
 }
 
-export { generateProjectPage, generateNavprojects, generateNewProjectDialog, generateEditProjectDialog, generateNewToDoDialog }
+export { generateProjectPage, generateNavprojects, generateNewProjectDialog, generateEditProjectDialog, generateNewToDoDialog, generateEditToDoDialog }

@@ -1,5 +1,5 @@
 import  { projects, generateNewProject, generateNewToDoItem } from "./js/app-logic"
-import { generateProjectPage, generateNavprojects, generateNewProjectDialog, generateEditProjectDialog, generateNewToDoDialog } from "./js/DOM-generation.js";
+import { generateProjectPage, generateNavprojects, generateNewProjectDialog, generateEditProjectDialog, generateNewToDoDialog, generateEditToDoDialog } from "./js/DOM-generation.js";
 import "./styles.css";
 
 console.log(projects.getProjectsArray());
@@ -78,7 +78,28 @@ function updateProjectPage(index) {
 
         const editToDoOpen = toDo.querySelector(".edit-to-do-open");
         editToDoOpen.addEventListener("click", () => {
-            console.log(currentToDoItem);
+            generateEditToDoDialog(currentToDoItem);
+
+            const editToDoDialog = document.querySelector("#edit-to-do-dialog");
+            editToDoDialog.showModal();
+
+            const editToDoCloseBtn = document.querySelector("#edit-to-do-close");
+            editToDoCloseBtn.addEventListener("click", () => {
+                editToDoDialog.close();
+            });
+
+            const editToDoSaveBtn = document.querySelector("#edit-to-do-save");
+            editToDoSaveBtn.addEventListener("click", (event) => {
+                event.preventDefault();
+
+                currentToDoItem.name = document.querySelector("#newToDoName").value;
+                currentToDoItem.description = document.querySelector("#newToDoDescription").value;
+                currentToDoItem.deadline = document.querySelector("#newToDoDeadline").value;
+                currentToDoItem.priority = document.querySelector("#newToDoPriority")
+                
+                updateProjectPage(index);
+                editToDoDialog.close();
+            });
         })
     });
 }
