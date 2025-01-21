@@ -1,10 +1,12 @@
 import  { projects, generateNewProject, generateNewToDoItem } from "./js/app-logic"
 import { generateProjectPage, generateNavprojects, generateNewProjectDialog, generateEditProjectDialog, generateNewToDoDialog, generateEditToDoDialog } from "./js/DOM-generation.js";
+import saveData from "./js/savaData.js";
 import "./styles.css";
 
 console.log(projects.getProjectsArray());
 
 function updateProjectPage(index) {
+    saveData(projects.getProjectsArray());
 
     generateProjectPage(projects.getProjectsArray(), index);
     const currentProject = projects.getProjectsArray()[index];
@@ -131,6 +133,9 @@ function updateNav(){
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    updateProjectPage(0);
+    updateNav()
+
     const newProjectOpenBtn = document.querySelector("#new-project-open");
     newProjectOpenBtn.addEventListener("click", () => {
         generateNewProjectDialog();
@@ -161,6 +166,3 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
-
-updateProjectPage(0);
-updateNav()

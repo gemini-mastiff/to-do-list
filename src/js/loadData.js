@@ -20,8 +20,9 @@ function storageAvailable(type) {
 }
 
 function parseData(data) {
+  const parsedData = JSON.parse(data);
 
-  data.forEach((object) => {
+  parsedData.forEach((object) => {
     object.addToDoItem = function(toDoItem) {
       this.toDoList.push(toDoItem);
     }
@@ -30,17 +31,19 @@ function parseData(data) {
     }
   });
 
-  return data;
+  return parsedData;
 }
 
 export default function() {
+  const stringDefaultData = JSON.stringify(defaultData);
     if (storageAvailable("localStorage")) {
-        if(!localStorage.getItem("folders")) {
-            return parseData(defaultData);
-        } else {
-            return localStorage.getItem("folders");
-        }
+      if(!localStorage.getItem("projects")) {
+        return parseData(stringDefaultData);
+      } else {
+        const newData = localStorage.getItem("projects");
+        return parseData(newData);
+      }
     } else {
-        return defaultData;
+      return parseData(stringDefaultData);
     }
 }
