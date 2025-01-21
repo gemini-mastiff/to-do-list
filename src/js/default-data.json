@@ -2,19 +2,19 @@
     {
         "name":"Create a to-do list app",
         "description":"My next big project will be a to-do list application, it's gonna be a lot of learning!",
-        "deadline":"2025-01-13T14:05",
+        "deadline":"02/09/2025, 12:00 PM",
         "toDoList":[
             {
                 "name":"Create an awesome looking page",
                 "description":"I need to get better at UX.",
-                "deadline":"2025-01-13T14:05",
+                "deadline":"02/09/2025, 12:00 PM",
                 "priority":"Low",
                 "complete": true
             },
             {
                 "name":"Hook the DOM up to the data",
                 "description":"There's so many moving parts all of a sudden ;-;",
-                "deadline":"2025-01-13T14:05",
+                "deadline":" 02/09/2025, 12:00 PM",
                 "priority":"Low",
                 "complete": false
             }
@@ -23,19 +23,19 @@
     {
         "name":"Learn German",
         "description":"Why did they make this language so hard?",
-        "deadline":"2025-01-13T14:05",
+        "deadline":"02/09/2025, 12:00 PM",
         "toDoList":[
             {
                 "name":"Memorise gendered endings",
                 "description":"WHY ARE THERE SO MANY",
-                "deadline":"2025-01-13T14:05",
+                "deadline":"02/09/2025, 12:00 PM",
                 "priority":"High",
                 "complete": false
             },
             {
                 "name":"Complete A1 course",
                 "description":"You've gotta start somewhere!",
-                "deadline":"2025-01-13T14:05",
+                "deadline":"02/09/2025, 12:00 PM",
                 "priority":"Ongoing",
                 "complete": true
             }
