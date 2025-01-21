@@ -228,13 +228,26 @@ main{
 	font-weight: bold;
 }
 
-.title-wrapper .edit-project-button{
+.title-wrapper img{
+	visibility: hidden;
 	cursor: pointer;
 	width: 30px;
 	height: 30px;
 	position: absolute;
+}
+
+.title-wrapper:hover img{
+	visibility: visible;
+}
+
+.edit-project-button{
 	top: 1.5rem;
 	right: -3rem;
+}
+
+.delete-project-button{
+	top: 1.5rem;
+	right: -5.5rem;
 }
 
 .title-wrapper>p{

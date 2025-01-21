@@ -1,6 +1,7 @@
 import closeBtnSvg from "../svg/window-close.svg";
 import editBtnSvg from "../svg/dots-horizontal.svg";
 import toDoBtnSvg from "../svg/plus.svg";
+import delBtnSvg from "../svg/delete.svg";
 
 const navList = document.querySelector("#nav-projects-list");
 const content = document.querySelector("#content");
@@ -251,17 +252,25 @@ function generateProjectPage(projects, index) {
     titleWrapper.classList.add("title-wrapper");
     const projectHeader = document.createElement("h1");
     projectHeader.textContent = project.name;
+
     const editProjectBtn = document.createElement("img");
     editProjectBtn.src = editBtnSvg;
     editProjectBtn.alt = "Edit Project";
     editProjectBtn.classList.add("edit-project-button");
     editProjectBtn.id = "edit-project-open";
+
+    const delProjectBtn = document.createElement("img");
+    delProjectBtn.src = delBtnSvg;
+    delProjectBtn.alt = "Delete Project";
+    delProjectBtn.classList.add("delete-project-button");
+    delProjectBtn.id = "delete-project-button";
+
     const projectDesc = document.createElement("p");
     projectDesc.textContent = project.description;
     const newProjectDeadline = document.createElement("p");
     newProjectDeadline.textContent = `Due: ${project.deadline}`;
 
-    projectHeader.append(editProjectBtn);
+    projectHeader.append(editProjectBtn, delProjectBtn);
     titleWrapper.append(projectHeader, newProjectDeadline, projectDesc);
 
     const toDoList = document.createElement("ul");
@@ -290,7 +299,12 @@ function generateProjectPage(projects, index) {
         editToDoBtn.alt = "Edit To-Do";
         editToDoBtn.classList.add("edit-to-do-open");
 
-        listItem.append(checkbox, header, deadline, editToDoBtn);
+        const delToDoBtn = document.createElement("img");
+        delToDoBtn.src = delBtnSvg;
+        delToDoBtn.alt = "Delete To-Do";
+        delToDoBtn.classList.add("delete-to-do-button");
+
+        listItem.append(checkbox, header, deadline, editToDoBtn, delToDoBtn);
         toDoList.append(listItem);
     });
 
