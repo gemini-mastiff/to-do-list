@@ -250,6 +250,8 @@ function generateProjectPage(projects, index) {
 
     const titleWrapper = document.createElement("div");
     titleWrapper.classList.add("title-wrapper");
+    const headerWrapper = document.createElement("div");
+    headerWrapper.classList.add("header-wrapper");
     const projectHeader = document.createElement("h1");
     projectHeader.textContent = project.name;
 
@@ -267,11 +269,14 @@ function generateProjectPage(projects, index) {
 
     const projectDesc = document.createElement("p");
     projectDesc.textContent = project.description;
-    const newProjectDeadline = document.createElement("p");
-    newProjectDeadline.textContent = `Due: ${project.deadline}`;
+    projectDesc.id = "projectDesc";
+    const projectDeadline = document.createElement("p");
+    projectDeadline.textContent = `Due: ${project.deadline}`;
+    projectDeadline.id = "projectDeadline";
 
-    projectHeader.append(editProjectBtn, delProjectBtn);
-    titleWrapper.append(projectHeader, newProjectDeadline, projectDesc);
+    projectHeader.append(editProjectBtn, delProjectBtn)
+    headerWrapper.append(projectHeader);
+    titleWrapper.append(headerWrapper, projectDeadline, projectDesc);
 
     const toDoList = document.createElement("ul");
     toDoList.classList.add("to-do-list");

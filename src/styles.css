@@ -218,17 +218,26 @@ main{
 }
 
 .title-wrapper{
-	margin-bottom: 3rem;
+	margin-bottom: 2rem;
 }
 
-.title-wrapper>h1{
+.header-wrapper>h1{
 	width: fit-content;
 	position: relative;
 	font-size: 3rem;
 	font-weight: bold;
 }
 
-.title-wrapper img{
+.title-wrapper>p{
+	color: var(--TEXT-LIGHT);
+}
+
+#projectDesc{
+	font-size: 1.2rem;
+	margin-top: 1rem;
+}
+
+.header-wrapper img{
 	visibility: hidden;
 	cursor: pointer;
 	width: 30px;
@@ -236,7 +245,7 @@ main{
 	position: absolute;
 }
 
-.title-wrapper:hover img{
+.header-wrapper:hover img{
 	visibility: visible;
 }
 
@@ -248,10 +257,6 @@ main{
 .delete-project-button{
 	top: 1.5rem;
 	right: -5.5rem;
-}
-
-.title-wrapper>p{
-	color: var(--TEXT-LIGHT);
 }
 
 .to-do-list{
@@ -266,7 +271,7 @@ main{
 
 .to-do-list>li>p{
 	color: var(--TEXT-LIGHT);
-	font-size: 0.8rem;
+	font-size: 1rem;
 }
 
 .to-do-list>li>img{
