@@ -5,8 +5,8 @@ import "./styles.css";
 console.log(projects.getProjectsArray());
 
 function updateProjectPage(index) {
-    generateProjectPage(projects.getProjectsArray(), index);
 
+    generateProjectPage(projects.getProjectsArray(), index);
     const currentProject = projects.getProjectsArray()[index];
 
     const editProjectOpenBtn = document.querySelector("#edit-project-open");
@@ -35,6 +35,14 @@ function updateProjectPage(index) {
         });
     });
 
+    const delProjectBtn = document.querySelector("#delete-project-button");
+    delProjectBtn.addEventListener("click", () => {
+        projects.delProject(index);
+        updateNav()
+        updateProjectPage(0)
+        console.log(projects.getProjectsArray());
+    })
+    
     const newToDoOpenBtn = document.querySelector("#new-to-do-open");
     newToDoOpenBtn.addEventListener("click", () => {
         generateNewToDoDialog();
@@ -132,9 +140,9 @@ document.addEventListener("DOMContentLoaded", () => {
         newProjectSaveBtn.addEventListener("click", (event) => {
             event.preventDefault();
         
-            const projectName = document.querySelector("#projectName").value;
-            const projectDesc = document.querySelector("#projectDescription").value;
-            const projectDeadline = document.querySelector("#projectDeadline").value;
+            const projectName = document.querySelector("#newProjectName").value;
+            const projectDesc = document.querySelector("#newProjectDescription").value;
+            const projectDeadline = document.querySelector("#newProjectDeadline").value;
         
             const newProject = generateNewProject(projectName, projectDesc, projectDeadline);
             projects.addProject(newProject);
