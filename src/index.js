@@ -70,12 +70,16 @@ function updateProjectPage(index) {
     allToDos.forEach((toDo) => {
         const toDoIndex = toDo.dataset.index;
         const currentToDoItem = currentProject.toDoList[toDoIndex];
-        const checkbox = toDo.querySelector(".to-do-checkbox");
-        const editToDoOpen = toDo.querySelector(".edit-to-do-open")
 
+        const checkbox = toDo.querySelector(".to-do-checkbox");
         checkbox.addEventListener("change", () => {
             currentToDoItem.complete = checkbox.checked ? true : false;
         });
+
+        const editToDoOpen = toDo.querySelector(".edit-to-do-open");
+        editToDoOpen.addEventListener("click", () => {
+            console.log(currentToDoItem);
+        })
     });
 }
 
