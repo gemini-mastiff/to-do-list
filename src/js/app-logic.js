@@ -3,7 +3,7 @@ import { format } from "date-fns";
 
 function formatDate(date) {
     if (date) {
-        return format(date, `dd/MM/yyyy - kk:mm`);
+        return format(date, `kk:mm dd/MM/yyyy`);
     } else {
         return "N/A";
     }
@@ -33,7 +33,7 @@ function generateNewProject(name, description, date) {
 
 function generateNewToDoItem(name, description, date, priority) {
     const complete = false;
-    
+
     const deadline = formatDate(date);
 
     return { name, description, deadline, priority, complete };
