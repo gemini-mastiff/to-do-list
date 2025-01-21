@@ -234,7 +234,7 @@ function generateProjectPage(projects, index) {
 
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
-        checkbox.id = "to-do-checkbox";
+        checkbox.classList.add("to-do-checkbox");
         checkbox.checked = toDo.complete ? true : false;
 
         const header = document.createElement("h2");
