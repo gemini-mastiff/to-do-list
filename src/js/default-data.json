@@ -7,28 +7,28 @@
             {
                 "name":"Create a new Project",
                 "description":"The bread and butter of any good to-do app.",
-                "deadline":"12/01/2025, 13:00 PM",
+                "deadline":"13:00 12/01/2025",
                 "priority":"High",
                 "complete": false
             },
             {
                 "name":"Edit/Delete a Project",
                 "description":"You won't be doing the same thing forever!",
-                "deadline":"12/01/2025, 13:00 PM",
+                "deadline":"13:00 12/01/2025",
                 "priority":"Low",
                 "complete": false
             },
             {
                 "name":"Add a new To-Do",
                 "description":"It's one thing after another...",
-                "deadline":"12/01/2025, 13:00 PM",
+                "deadline":"13:00 12/01/2025",
                 "priority":"Daily",
                 "complete": false
             },
             {
                 "name":"Edit/Delete a To-Do",
                 "description":"Gotta focus and prioritise!",
-                "deadline":"12/01/2025, 13:00 PM",
+                "deadline":"13:00 12/01/2025",
                 "priority":"Anytime",
                 "complete": false
             }
